@@ -6,4 +6,45 @@
 
 body {
     font-family: 'Roboto Mono';
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+header {
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+
+    background-color: gray;
+}
+
+main {
+    margin-top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: gray;
+
+    text-align: center;
+
+    width: 300px;
+    height: 300px;
+}
+
+#js-form {
+    margin-top: 100px;
+}
+
+#js-form button {
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
 }
