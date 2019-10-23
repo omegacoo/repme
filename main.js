@@ -21,11 +21,11 @@ const STATE = {
 };
 
 // Temporary arrays just to test getReps
-const fedArray = [];
+let fedArray = [];
 
-const stateArray = [];
+let stateArray = [];
 
-const localArray = [];
+let localArray = [];
 
 // Handle card swap
 function onCardSwap(){
@@ -240,6 +240,10 @@ function getResults(query){
 function onAddressSubmit(){
     $('#js-form').on('submit', function(e){
         e.preventDefault();
+
+        fedArray = [];
+        stateArray = [];
+        localArray = [];
 
         getResults($('#js-address').val());
         STATE.SCREEN = screens.LEVEL_SELECT;
