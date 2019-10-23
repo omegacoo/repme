@@ -13,7 +13,8 @@ const levels = Object.freeze({
 
 const STATE = {
     SCREEN: screens.LANDING,
-    LEVEL: levels.FEDERAL
+    LEVEL: levels.FEDERAL,
+    REP: 0
 };
 
 // Temporary arrays just to test getReps
@@ -251,11 +252,63 @@ const fakeLocalArray = [
     }
 ];
 
+// Handle card swap
+function onCardSwap(){
+    let repArr;
+
+    switch(STATE.LEVEL){
+        case 'federal':
+            repArr = fakeFedArray;
+            break;
+        case 'state':
+            repArr = fakeStateArray;
+            break;
+        case 'local':
+            repArr = fakeLocalArray;
+            break;
+    }
+    $('#js-right').on('click', function(){
+        if(STATE.REP < repArr.length - 1){
+            STATE.REP += 1
+        }
+        fillRepCard();
+        updateScreen();
+    })
+    $('#js-left').on('click', function(){
+        if(STATE.REP > 0){
+            STATE.REP -= 1
+        }
+        fillRepCard();
+        updateScreen();
+    })
+}
+
+// Populate Rep Card
+function fillRepCard(){
+    switch(STATE.LEVEL){
+        case 'federal':
+            $('#title').text(fakeFedArray[STATE.REP].title);
+            $('#name').text(fakeFedArray[STATE.REP].name);
+            $('#party').text(fakeFedArray[STATE.REP].party);
+            break;
+        case 'state':
+            $('#title').text(fakeStateArray[STATE.REP].title);
+            $('#name').text(fakeStateArray[STATE.REP].name);
+            $('#party').text(fakeStateArray[STATE.REP].party);
+            break;
+        case 'local':
+            $('#title').text(fakeLocalArray[STATE.REP].title);
+            $('#name').text(fakeLocalArray[STATE.REP].name);
+            $('#party').text(fakeLocalArray[STATE.REP].party);
+            break;
+    }
+}
+
 // Handle rep pick
 function onRepPick(){
     $('.js-rep-pick').on('click', 'button', function(e){
-        console.log(this.id);
         STATE.SCREEN = screens.REP_CARD;
+        STATE.REP = this.id;
         updateScreen();
     });
 };
@@ -266,7 +319,7 @@ function getReps(){
         case 'federal':
             for(let i = 0; i < fakeFedArray.length; i++){
                 $('.js-rep-pick').append(
-                    `<button id="${fakeFedArray[i].title}" class="js-rep-button">
+                    `<button id="${i}" class="js-rep-button">
                         ${fakeFedArray[i].title}
                     </button>`
                 );
@@ -275,7 +328,7 @@ function getReps(){
         case 'state':
             for(let i = 0; i < fakeStateArray.length; i++){
                 $('.js-rep-pick').append(
-                    `<button id="${fakeStateArray[i].title}" class="js-rep-button">
+                    `<button id="${i}" class="js-rep-button">
                         ${fakeStateArray[i].title}
                     </button>`
                 ); 
@@ -284,7 +337,7 @@ function getReps(){
         case 'local':
             for(let i = 0; i < fakeLocalArray.length; i++){
                 $('.js-rep-pick').append(
-                    `<button id="${fakeLocalArray[i].title}" class="js-rep-button">
+                    `<button id="${i}" class="js-rep-button">
                         ${fakeLocalArray[i].title}
                     </button>`
                 );
@@ -320,8 +373,6 @@ function onLevelSelect(){
 // Handle back button click on all but landing screen
 function onBackClick(){
     $('.back').on('click', function(e){
-        e.preventDefault();
-        
         switch(STATE.SCREEN){
             case 'level_select':
                 STATE.SCREEN = screens.LANDING;
@@ -380,6 +431,8 @@ function updateScreen(){
             $('.js-rep-pick').addClass('hidden');
             $('.js-rep-card').removeClass('hidden');
             $('.back').removeClass('hidden');
+
+            fillRepCard();
             break;
     };
 };
@@ -391,6 +444,7 @@ function App(){
     onBackClick();
     onLevelSelect();
     onRepPick();
+    onCardSwap();
 };
 
 $(App);

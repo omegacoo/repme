@@ -118,6 +118,8 @@ main {
     background-color: gray;
 
     text-align: center;
+
+    overflow: hidden;
 }
 
 #js-image {
@@ -136,6 +138,19 @@ main {
     margin-top: 20px;
 
     background-color: white;
+}
+
+#js-left, #js-right {
+    height: 250px;
+    margin-top: 20px;
+}
+
+#js-left {
+    float: left;
+}
+
+#js-right {
+    float: right;
 }
 
 .js-rep-contact {
