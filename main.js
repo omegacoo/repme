@@ -16,6 +16,7 @@ const STATE = {
     LEVEL: levels.FEDERAL
 };
 
+// Temporary arrays just to test getReps
 const fakeFedArray = [
     {
         title: 'President',
@@ -250,38 +251,47 @@ const fakeLocalArray = [
     }
 ];
 
+// Handle rep pick
+function onRepPick(){
+    $('.js-rep-pick').on('click', 'button', function(e){
+        console.log(this.id);
+        STATE.SCREEN = screens.REP_CARD;
+        updateScreen();
+    });
+};
+
 // Create the Rep buttons
 function getReps(){
     switch(STATE.LEVEL){
         case 'federal':
             for(let i = 0; i < fakeFedArray.length; i++){
                 $('.js-rep-pick').append(
-                        `<button id="${fakeFedArray[i].title} class="js-rep-button">
-                            ${fakeFedArray[i].title}
-                        </button>`
-                    )   
-            }
+                    `<button id="${fakeFedArray[i].title}" class="js-rep-button">
+                        ${fakeFedArray[i].title}
+                    </button>`
+                );
+            };
             break;
         case 'state':
             for(let i = 0; i < fakeStateArray.length; i++){
                 $('.js-rep-pick').append(
-                        `<button id="${fakeStateArray[i].title} class="js-rep-button">
-                            ${fakeStateArray[i].title}
-                        </button>`
-                    )   
-            }
+                    `<button id="${fakeStateArray[i].title}" class="js-rep-button">
+                        ${fakeStateArray[i].title}
+                    </button>`
+                ); 
+            };
             break;
         case 'local':
             for(let i = 0; i < fakeLocalArray.length; i++){
                 $('.js-rep-pick').append(
-                        `<button id="${fakeLocalArray[i].title} class="js-rep-button">
-                            ${fakeLocalArray[i].title}
-                        </button>`
-                    )   
-            }
+                    `<button id="${fakeLocalArray[i].title}" class="js-rep-button">
+                        ${fakeLocalArray[i].title}
+                    </button>`
+                );
+            };
             break;
-    }
-}
+    };
+};
 
 // Query the API
 function getResults(){
@@ -347,21 +357,28 @@ function updateScreen(){
             $('.js-landing').removeClass('hidden');
             $('.js-level-select').addClass('hidden');
             $('.js-rep-pick').addClass('hidden');
+            $('.js-rep-card').addClass('hidden');
             $('.back').addClass('hidden');
             break;
         case 'level_select':
             $('.js-landing').addClass('hidden');
             $('.js-level-select').removeClass('hidden');
             $('.js-rep-pick').addClass('hidden');
+            $('.js-rep-card').addClass('hidden');
             $('.back').removeClass('hidden');
             break;
         case 'rep_pick':
             $('.js-landing').addClass('hidden');
             $('.js-level-select').addClass('hidden');
             $('.js-rep-pick').removeClass('hidden');
+            $('.js-rep-card').addClass('hidden');
             $('.back').removeClass('hidden');
             break;
         case 'rep_card':
+            $('.js-landing').addClass('hidden');
+            $('.js-level-select').addClass('hidden');
+            $('.js-rep-pick').addClass('hidden');
+            $('.js-rep-card').removeClass('hidden');
             $('.back').removeClass('hidden');
             break;
     };
@@ -373,6 +390,7 @@ function App(){
     getResults();
     onBackClick();
     onLevelSelect();
+    onRepPick();
 };
 
 $(App);

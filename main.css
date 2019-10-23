@@ -103,12 +103,56 @@ main {
     overflow: auto;
 }
 
-.js-rep-button {
-    width: 50px;
-    height: 50px;
+/* Representative Card */
+.js-rep-card {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 2px solid black;
+    border-radius: 30px;
+
+    height: 55vh;
+    width: 90vw;
+
+    background-color: gray;
+
+    text-align: center;
 }
 
-/* Representative Card */
+#js-image {
+    border: 2px solid black;
+    border-radius: 50%;
+    
+    width: 130px;
+    height: 130px;
+    
+    text-align: center;
+    padding: 10px;
+    padding-top: 40px;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+    background-color: white;
+}
+
+.js-rep-contact {
+    width: 300px;
+    height: 100px;
+
+    background-color: white;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+
+    border-radius: 15px;
+
+    text-align: left;
+    padding: 5px;
+}
 
 /* etc. */
 .back {
