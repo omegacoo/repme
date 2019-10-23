@@ -1,3 +1,6 @@
+const BASE_URL = 'https://www.googleapis.com/civicinfo/v2/representatives';
+const apiKey = 'AIzaSyBpylwFzws1j6fnwaEkhdvi3o6Z4uXJWwg';
+
 const screens = Object.freeze({
     LANDING: 'landing',
     LEVEL_SELECT: 'level_select',
@@ -18,268 +21,51 @@ const STATE = {
 };
 
 // Temporary arrays just to test getReps
-const fakeFedArray = [
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    },
-    {
-        title: 'President',
-        name: 'Trump',
-        party: 'Republican'
-    },
-    {
-        title: 'Vice President',
-        name: 'Pence',
-        party: 'Republican'
-    }
-];
+const fedArray = [];
 
-const fakeStateArray = [
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    },
-    {
-        title: 'Governor',
-        name: 'Abbot',
-        party: 'Republican'
-    }
-];
+const stateArray = [];
 
-const fakeLocalArray = [
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    },
-    {
-        title: 'Mayor',
-        name: 'McCoy',
-        party: 'Republican'
-    }
-];
+const localArray = [];
 
 // Handle card swap
 function onCardSwap(){
     let repArr;
 
-    switch(STATE.LEVEL){
-        case 'federal':
-            repArr = fakeFedArray;
-            break;
-        case 'state':
-            repArr = fakeStateArray;
-            break;
-        case 'local':
-            repArr = fakeLocalArray;
-            break;
-    }
     $('#js-right').on('click', function(){
+        switch(STATE.LEVEL){
+            case 'federal':
+                repArr = fedArray;
+                break;
+            case 'state':
+                repArr = stateArray;
+                break;
+            case 'local':
+                repArr = localArray;
+                break;
+        };
         if(STATE.REP < repArr.length - 1){
             STATE.REP += 1
+            fillRepCard();
+            updateScreen();
         }
-        fillRepCard();
-        updateScreen();
     })
     $('#js-left').on('click', function(){
+        switch(STATE.LEVEL){
+            case 'federal':
+                repArr = fedArray;
+                break;
+            case 'state':
+                repArr = stateArray;
+                break;
+            case 'local':
+                repArr = localArray;
+                break;
+        };
         if(STATE.REP > 0){
             STATE.REP -= 1
+            fillRepCard();
+            updateScreen();
         }
-        fillRepCard();
-        updateScreen();
     })
 }
 
@@ -287,19 +73,19 @@ function onCardSwap(){
 function fillRepCard(){
     switch(STATE.LEVEL){
         case 'federal':
-            $('#title').text(fakeFedArray[STATE.REP].title);
-            $('#name').text(fakeFedArray[STATE.REP].name);
-            $('#party').text(fakeFedArray[STATE.REP].party);
+            $('#title').text(fedArray[STATE.REP].title);
+            $('#name').text(fedArray[STATE.REP].name);
+            $('#party').text(fedArray[STATE.REP].party);
             break;
         case 'state':
-            $('#title').text(fakeStateArray[STATE.REP].title);
-            $('#name').text(fakeStateArray[STATE.REP].name);
-            $('#party').text(fakeStateArray[STATE.REP].party);
+            $('#title').text(stateArray[STATE.REP].title);
+            $('#name').text(stateArray[STATE.REP].name);
+            $('#party').text(stateArray[STATE.REP].party);
             break;
         case 'local':
-            $('#title').text(fakeLocalArray[STATE.REP].title);
-            $('#name').text(fakeLocalArray[STATE.REP].name);
-            $('#party').text(fakeLocalArray[STATE.REP].party);
+            $('#title').text(localArray[STATE.REP].title);
+            $('#name').text(localArray[STATE.REP].name);
+            $('#party').text(localArray[STATE.REP].party);
             break;
     }
 }
@@ -308,7 +94,7 @@ function fillRepCard(){
 function onRepPick(){
     $('.js-rep-pick').on('click', 'button', function(e){
         STATE.SCREEN = screens.REP_CARD;
-        STATE.REP = this.id;
+        STATE.REP = parseInt(this.id);
         updateScreen();
     });
 };
@@ -317,37 +103,33 @@ function onRepPick(){
 function getReps(){
     switch(STATE.LEVEL){
         case 'federal':
-            for(let i = 0; i < fakeFedArray.length; i++){
+            for(let i = 0; i < fedArray.length; i++){
                 $('.js-rep-pick').append(
                     `<button id="${i}" class="js-rep-button">
-                        ${fakeFedArray[i].title}
+                        ${fedArray[i].title}
                     </button>`
                 );
             };
             break;
         case 'state':
-            for(let i = 0; i < fakeStateArray.length; i++){
+            for(let i = 0; i < stateArray.length; i++){
                 $('.js-rep-pick').append(
                     `<button id="${i}" class="js-rep-button">
-                        ${fakeStateArray[i].title}
+                        ${stateArray[i].title}
                     </button>`
                 ); 
             };
             break;
         case 'local':
-            for(let i = 0; i < fakeLocalArray.length; i++){
+            for(let i = 0; i < localArray.length; i++){
                 $('.js-rep-pick').append(
                     `<button id="${i}" class="js-rep-button">
-                        ${fakeLocalArray[i].title}
+                        ${localArray[i].title}
                     </button>`
                 );
             };
             break;
     };
-};
-
-// Query the API
-function getResults(){
 };
 
 // Handle level selection
@@ -387,7 +169,71 @@ function onBackClick(){
         }
         updateScreen();
     });
+};
 
+function handleJson(json){
+    let divisions = json.divisions;
+    let offices = json.offices;
+    let officials = json.officials;
+    let federalMax = divisions['ocd-division/country:us'].officeIndices[divisions['ocd-division/country:us'].officeIndices.length - 1];
+    let state = json.normalizedInput.state.toLowerCase();
+    let stateMax = divisions[`ocd-division/country:us/state:${state}`].officeIndices[divisions[`ocd-division/country:us/state:${state}`].officeIndices.length - 1]
+
+    console.log(json);
+    for(let i = 0; i < offices.length; i++){
+        for(let j = 0; j < offices[i].officialIndices.length; j++){
+            if(i <= federalMax){
+                fedArray.push({
+                    title: offices[i].name,
+                    name: officials[offices[i].officialIndices[j]].name,
+                    party: officials[offices[i].officialIndices[j]].party
+                })
+            } else if(i <= stateMax){
+                stateArray.push({
+                    title: offices[i].name,
+                    name: officials[offices[i].officialIndices[j]].name,
+                    party: officials[offices[i].officialIndices[j]].party
+                })
+            } else {
+                localArray.push({
+                    title: offices[i].name,
+                    name: officials[offices[i].officialIndices[j]].name,
+                    party: officials[offices[i].officialIndices[j]].party
+                })
+            }
+        };
+    };
+};
+
+function formatQuery(params){
+    const queryItems = Object.keys(params)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
+    return queryItems.join('&');
+}
+
+// Query the API
+function getResults(query){
+    const params = {
+        key: apiKey,
+        address: query
+    };
+
+    const queryString = formatQuery(params);
+    const url = BASE_URL + '?' + queryString;
+
+    fetch(url)
+        .then(response => {
+            if(response.ok){
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => {
+            handleJson(responseJson);
+        })
+        .catch(err => {
+            alert(err);
+        });
 };
 
 // Handle address form submit
@@ -395,6 +241,7 @@ function onAddressSubmit(){
     $('#js-form').on('submit', function(e){
         e.preventDefault();
 
+        getResults($('#js-address').val());
         STATE.SCREEN = screens.LEVEL_SELECT;
         updateScreen();
     });
@@ -440,7 +287,6 @@ function updateScreen(){
 function App(){
     updateScreen();
     onAddressSubmit();
-    getResults();
     onBackClick();
     onLevelSelect();
     onRepPick();
