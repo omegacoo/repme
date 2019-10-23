@@ -18,13 +18,18 @@
         <h1>Who Represents Me?</h1>
     </header>
     <main>
-        <form id="js-form" action="#">
-            <input id="js-address" type="text" value="enter your address...">
-            <button>submit</button>
-        </form>
-        <section id="js-results-container">
-            <!-- Dynamically place results here -->
+        <section class="js-landing">
+            <form id="js-form" action="#">
+                <input id="js-address" type="text" value="enter your address...">
+                <button>submit</button>
+            </form>
         </section>
+        <section class="js-level-select">
+            <button id="federal" class="js-level-button">Federal</button>
+            <button id="state" class="js-level-button">State</button>
+            <button id="local" class="js-level-button">Local</button>
+        </section>
+        <button class="back hidden">back</button>
     </main>
 </body>
 </html>

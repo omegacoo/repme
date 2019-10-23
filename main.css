@@ -27,6 +27,13 @@ header {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Landing */
+.js-landing {
     margin-top: 20vh;
     margin-left: auto;
     margin-right: auto;
@@ -37,14 +44,61 @@ main {
 
     width: 300px;
     height: 300px;
+
+    border: 2px solid black;
+    border-radius: 30px;
 }
 
 #js-form {
+    display: block;
     margin-top: 100px;
 }
 
 #js-form button {
+    display: block;
+
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    
     width: 100px;
     height: 50px;
+}
+
+/* Level Select */
+.js-level-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.js-level-button {
+    width: 130px;
+    height: 130px;
+
+    background-color: gray;
+
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Representative Select */
+
+/* Representative Card */
+
+/* etc. */
+.back {
+    width: 100px;
+    height: 30px;
+
+    background-color: gray;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hidden {
+    display: none;
 }
