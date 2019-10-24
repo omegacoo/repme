@@ -78,18 +78,48 @@ function fillRepCard(){
             $('#name').text(fedArray[STATE.REP].name);
             $('#party').text(fedArray[STATE.REP].party);
             $('#js-image').html(`<img class="js-rep-image" src="${fedArray[STATE.REP].image}" alt="${fedArray[STATE.REP].name}">`);
+            $('#phone').text(`Phone: ${fedArray[STATE.REP].phone}`);
+            if(fedArray[STATE.REP].social_media.facebook !== 'unknown'){
+                $('#facebook').text(`Facebook: `)
+                    .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].social_media.facebook}" 
+                                target="_blank">
+                                    ${fedArray[STATE.REP].social_media.facebook}
+                            </a>`);
+            } else {
+                $('#facebook').text('Facebook: unknown');
+            };
             break;
         case 'state':
             $('#title').text(stateArray[STATE.REP].title);
             $('#name').text(stateArray[STATE.REP].name);
             $('#party').text(stateArray[STATE.REP].party);
             $('#js-image').html(`<img class="js-rep-image" src="${stateArray[STATE.REP].image}" alt="${stateArray[STATE.REP].name}">`);
+            $('#phone').text(`Phone: ${stateArray[STATE.REP].phone}`);
+            if(stateArray[STATE.REP].social_media.facebook !== 'unknown'){
+                $('#facebook').text(`Facebook: `)
+                    .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].social_media.facebook}" 
+                                target="_blank">
+                                    ${stateArray[STATE.REP].social_media.facebook}
+                            </a>`);
+            } else {
+                $('#facebook').text('Facebook: unknown');
+            };
             break;
         case 'local':
             $('#title').text(localArray[STATE.REP].title);
             $('#name').text(localArray[STATE.REP].name);
             $('#party').text(localArray[STATE.REP].party);
             $('#js-image').html(`<img class="js-rep-image" src="${localArray[STATE.REP].image}" alt="${localArray[STATE.REP].name}">`);
+            $('#phone').text(`Phone: ${localArray[STATE.REP].phone}`);
+            if(localArray[STATE.REP].social_media.facebook !== 'unknown'){
+                $('#facebook').text(`Facebook: `)
+                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].social_media.facebook}" 
+                                target="_blank">
+                                    ${localArray[STATE.REP].social_media.facebook}
+                            </a>`);
+            } else {
+                $('#facebook').text('Facebook: unknown');
+            };
             break;
     }
 }
@@ -209,17 +239,27 @@ function handleJson(json){
     for(let i = 0; i < fedIndices.length; i++){
         for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
             let picture;
+            let facebook;
             if(officials[offices[fedIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[fedIndices[i]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
+            if(officials[offices[fedIndices[i]].officialIndices[j]].channels){
+                facebook = officials[offices[fedIndices[i]].officialIndices[j]].channels[0].id;
+            } else {
+                facebook = 'unknown';
+            }
 
             fedArray.push({
                 title: offices[fedIndices[i]].name,
                 name: officials[offices[fedIndices[i]].officialIndices[j]].name,
                 party: officials[offices[fedIndices[i]].officialIndices[j]].party,
-                image: picture
+                image: picture,
+                phone: officials[offices[fedIndices[i]].officialIndices[j]].phones[0],
+                social_media: {
+                    facebook: facebook
+                }
             })
         };
     };
@@ -227,17 +267,27 @@ function handleJson(json){
     for(let i = 0; i < stateIndices.length; i++){
         for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
             let picture;
+            let facebook;
             if(officials[offices[stateIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[stateIndices[i]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
+            if(officials[offices[stateIndices[i]].officialIndices[j]].channels){
+                facebook = officials[offices[stateIndices[i]].officialIndices[j]].channels[0].id;
+            } else {
+                facebook = 'unknown';
+            }
 
             stateArray.push({
                 title: offices[stateIndices[i]].name,
                 name: officials[offices[stateIndices[i]].officialIndices[j]].name,
                 party: officials[offices[stateIndices[i]].officialIndices[j]].party,
-                image: picture
+                image: picture,
+                phone: officials[offices[stateIndices[i]].officialIndices[j]].phones[0],
+                social_media: {
+                    facebook: facebook
+                }
             });
         };
     };
@@ -245,17 +295,27 @@ function handleJson(json){
     for(let i = 0; i < localIndices.length; i++){
         for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
             let picture;
+            let facebook;
             if(officials[offices[localIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[localIndices[i]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
+            if(officials[offices[localIndices[i]].officialIndices[j]].channels){
+                facebook = officials[offices[localIndices[i]].officialIndices[j]].channels[0].id;
+            } else {
+                facebook = 'unknown';
+            }
 
             localArray.push({
                 title: offices[localIndices[i]].name,
                 name: officials[offices[localIndices[i]].officialIndices[j]].name,
                 party: officials[offices[localIndices[i]].officialIndices[j]].party,
-                image: picture
+                image: picture,
+                phone: officials[offices[localIndices[i]].officialIndices[j]].phones[0],
+                social_media: {
+                    facebook: facebook
+                }
             });
         };
     };
