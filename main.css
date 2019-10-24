@@ -103,6 +103,10 @@ main {
     overflow: auto;
 }
 
+.js-rep-button {
+    overflow: hidden;
+}
+
 /* Representative Card */
 .js-rep-card {
     margin-top: 60px;
@@ -138,6 +142,20 @@ main {
     margin-top: 20px;
 
     background-color: white;
+
+    overflow: hidden;
+}
+
+.js-rep-image {
+    position: relative;
+
+    width: 131px;
+    height: 131px;
+
+    border-radius: 50%;
+
+    top: -42px;
+    left: -13px;
 }
 
 #js-left, #js-right {

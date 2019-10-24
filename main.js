@@ -1,5 +1,6 @@
 const BASE_URL = 'https://www.googleapis.com/civicinfo/v2/representatives';
 const apiKey = 'AIzaSyBpylwFzws1j6fnwaEkhdvi3o6Z4uXJWwg';
+const flagImage = 'https://www.pixelstalk.net/wp-content/uploads/images1/Download-American-Flag-Pictures.jpg';
 
 const screens = Object.freeze({
     LANDING: 'landing',
@@ -76,16 +77,19 @@ function fillRepCard(){
             $('#title').text(fedArray[STATE.REP].title);
             $('#name').text(fedArray[STATE.REP].name);
             $('#party').text(fedArray[STATE.REP].party);
+            $('#js-image').html(`<img class="js-rep-image" src="${fedArray[STATE.REP].image}" alt="${fedArray[STATE.REP].name}">`);
             break;
         case 'state':
             $('#title').text(stateArray[STATE.REP].title);
             $('#name').text(stateArray[STATE.REP].name);
             $('#party').text(stateArray[STATE.REP].party);
+            $('#js-image').html(`<img class="js-rep-image" src="${stateArray[STATE.REP].image}" alt="${stateArray[STATE.REP].name}">`);
             break;
         case 'local':
             $('#title').text(localArray[STATE.REP].title);
             $('#name').text(localArray[STATE.REP].name);
             $('#party').text(localArray[STATE.REP].party);
+            $('#js-image').html(`<img class="js-rep-image" src="${localArray[STATE.REP].image}" alt="${localArray[STATE.REP].name}">`);
             break;
     }
 }
@@ -204,30 +208,54 @@ function handleJson(json){
 
     for(let i = 0; i < fedIndices.length; i++){
         for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
+            let picture;
+            if(officials[offices[fedIndices[i]].officialIndices[j]].photoUrl){
+                picture = officials[offices[fedIndices[i]].officialIndices[j]].photoUrl;
+            } else {
+                picture = flagImage;
+            };
+
             fedArray.push({
                 title: offices[fedIndices[i]].name,
                 name: officials[offices[fedIndices[i]].officialIndices[j]].name,
-                party: officials[offices[fedIndices[i]].officialIndices[j]].party
+                party: officials[offices[fedIndices[i]].officialIndices[j]].party,
+                image: picture
             })
         };
     };
 
     for(let i = 0; i < stateIndices.length; i++){
         for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
+            let picture;
+            if(officials[offices[stateIndices[i]].officialIndices[j]].photoUrl){
+                picture = officials[offices[stateIndices[i]].officialIndices[j]].photoUrl;
+            } else {
+                picture = flagImage;
+            };
+
             stateArray.push({
                 title: offices[stateIndices[i]].name,
                 name: officials[offices[stateIndices[i]].officialIndices[j]].name,
-                party: officials[offices[stateIndices[i]].officialIndices[j]].party
+                party: officials[offices[stateIndices[i]].officialIndices[j]].party,
+                image: picture
             });
         };
     };
 
     for(let i = 0; i < localIndices.length; i++){
         for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
+            let picture;
+            if(officials[offices[localIndices[i]].officialIndices[j]].photoUrl){
+                picture = officials[offices[localIndices[i]].officialIndices[j]].photoUrl;
+            } else {
+                picture = flagImage;
+            };
+
             localArray.push({
                 title: offices[localIndices[i]].name,
                 name: officials[offices[localIndices[i]].officialIndices[j]].name,
-                party: officials[offices[localIndices[i]].officialIndices[j]].party
+                party: officials[offices[localIndices[i]].officialIndices[j]].party,
+                image: picture
             });
         };
     };
