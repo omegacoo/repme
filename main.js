@@ -175,32 +175,60 @@ function handleJson(json){
     let divisions = json.divisions;
     let offices = json.offices;
     let officials = json.officials;
-    let federalMax = divisions['ocd-division/country:us'].officeIndices[divisions['ocd-division/country:us'].officeIndices.length - 1];
+    let fedOffices = divisions['ocd-division/country:us'].officeIndices;
     let state = json.normalizedInput.state.toLowerCase();
-    let stateMax = divisions[`ocd-division/country:us/state:${state}`].officeIndices[divisions[`ocd-division/country:us/state:${state}`].officeIndices.length - 1]
+    let stateOffices = divisions[`ocd-division/country:us/state:${state}`].officeIndices;
+    
+    let fedIndices = [];
+    let stateIndices = [];
+    let localIndices = [];
+
+    for(let i = 0; i < fedOffices.length; i++){
+        fedIndices.push(fedOffices[i]);
+    };
+    for(let i = 0; i < stateOffices.length; i++){
+        stateIndices.push(stateOffices[i]);
+    };
+
+    // Put all indices not in either fedIndices or stateIndices into localIndices
+    for(let i = 0; i < offices.length; i++){
+        let foundFed = fedIndices.indexOf(i);
+        let foundState = stateIndices.indexOf(i);
+
+        if(foundFed === -1 && foundState === -1){
+            localIndices.push(i)
+        };
+    };
 
     console.log(json);
-    for(let i = 0; i < offices.length; i++){
-        for(let j = 0; j < offices[i].officialIndices.length; j++){
-            if(i <= federalMax){
-                fedArray.push({
-                    title: offices[i].name,
-                    name: officials[offices[i].officialIndices[j]].name,
-                    party: officials[offices[i].officialIndices[j]].party
-                })
-            } else if(i <= stateMax){
-                stateArray.push({
-                    title: offices[i].name,
-                    name: officials[offices[i].officialIndices[j]].name,
-                    party: officials[offices[i].officialIndices[j]].party
-                })
-            } else {
-                localArray.push({
-                    title: offices[i].name,
-                    name: officials[offices[i].officialIndices[j]].name,
-                    party: officials[offices[i].officialIndices[j]].party
-                })
-            }
+
+    for(let i = 0; i < fedIndices.length; i++){
+        for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
+            fedArray.push({
+                title: offices[fedIndices[i]].name,
+                name: officials[offices[fedIndices[i]].officialIndices[j]].name,
+                party: officials[offices[fedIndices[i]].officialIndices[j]].party
+            })
+        };
+    };
+
+    for(let i = 0; i < stateIndices.length; i++){
+        for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
+            stateArray.push({
+                title: offices[stateIndices[i]].name,
+                name: officials[offices[stateIndices[i]].officialIndices[j]].name,
+                party: officials[offices[stateIndices[i]].officialIndices[j]].party
+            });
+        };
+    };
+
+    for(let i = 0; i < localIndices.length; i++){
+        for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
+            localArray.push({
+                title: offices[localIndices[i]].name,
+                name: officials[offices[localIndices[i]].officialIndices[j]].name,
+                party: officials[offices[localIndices[i]].officialIndices[j]].party
+            });
         };
     };
 };
