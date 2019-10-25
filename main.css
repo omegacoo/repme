@@ -255,10 +255,6 @@ header {
     .js-rep-card h2 {
         margin-top: 5px;
     }
-
-    .js-rep-contact {
-        margin-left: 38vw;
-    }
 }
 
 /* iPhone Portrait */
@@ -378,8 +374,86 @@ header {
     }
 }
 
+/* iPad Landscape */
+@media only screen and (max-width: 1100px) and (max-height: 800px) {
+    header {
+        margin-top: 10vh;
+    }
+
+    .js-back-container {
+        bottom: 30px;
+    }
+
+    .js-landing {
+        margin-top: 20vh;
+    }
+
+    .js-level-select {
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 50vw;
+    }
+
+    .js-rep-pick {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0;
+
+        width: 50vw;
+
+        height: 600px;
+    }
+
+    .js-rep-card {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 80vw;
+    }
+
+    #js-image {
+        float: none;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+
+        width: 200px;
+        height: 200px;
+    }
+
+    .js-rep-image {
+        width: 251px;
+        height: 255px;
+    }
+
+    .js-rep-card h2 {
+        margin-top: 5px;
+        font-size: 50px;
+    }
+
+    .js-rep-card h3 {
+        font-size: 35px;
+    }
+
+    #js-left, #js-right {
+        height: 60vh;
+    }
+
+    .js-rep-contact {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+}
+
 /* Desktop */
-@media only screen and (min-width: 1000px) and (min-height: 400px) {
+@media only screen and (min-width: 1101px) and (min-height: 801px) {
     header {
         margin-top: 10vh;
     }
