@@ -340,7 +340,7 @@ function getResults(query){
             if(response.ok){
                 STATE.SCREEN = screens.LEVEL_SELECT;
                 updateScreen();
-                
+
                 return response.json();
             }
             throw new Error(response.statusText);
