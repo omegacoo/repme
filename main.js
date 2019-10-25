@@ -88,6 +88,15 @@ function fillRepCard(){
             } else {
                 $('#facebook').text('Facebook: unknown');
             };
+            if(fedArray[STATE.REP].phone !== 'unknown'){
+                $('#phone').text(`Phone: `)
+                    .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].phone}" 
+                                target="_blank">
+                                    ${fedArray[STATE.REP].phone}
+                            </a>`);
+            } else {
+                $('#phone').text('Phone: unknown');
+            };
             break;
         case 'state':
             $('#title').text(stateArray[STATE.REP].title);
@@ -104,6 +113,15 @@ function fillRepCard(){
             } else {
                 $('#facebook').text('Facebook: unknown');
             };
+            if(stateArray[STATE.REP].phone !== 'unknown'){
+                $('#phone').text(`Phone: `)
+                    .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].phone}" 
+                                target="_blank">
+                                    ${stateArray[STATE.REP].phone}
+                            </a>`);
+            } else {
+                $('#phone').text('Phone: unknown');
+            };
             break;
         case 'local':
             $('#title').text(localArray[STATE.REP].title);
@@ -119,6 +137,15 @@ function fillRepCard(){
                             </a>`);
             } else {
                 $('#facebook').text('Facebook: unknown');
+            };
+            if(localArray[STATE.REP].phone !== 'unknown'){
+                $('#phone').text(`Phone: `)
+                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].phone}" 
+                                target="_blank">
+                                    ${localArray[STATE.REP].phone}
+                            </a>`);
+            } else {
+                $('#phone').text('Phone: unknown');
             };
             break;
     }
@@ -238,6 +265,7 @@ function handleJson(json){
         for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
             let picture;
             let facebook;
+            let phones;
             if(officials[offices[fedIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[fedIndices[i]].officialIndices[j]].photoUrl;
             } else {
@@ -248,13 +276,18 @@ function handleJson(json){
             } else {
                 facebook = 'unknown';
             }
+            if(officials[offices[fedIndices[i]].officialIndices[j]].phones){
+                phones = officials[offices[fedIndices[i]].officialIndices[j]].phones[0];
+            } else {
+                phones = 'unknown';
+            }
 
             fedArray.push({
                 title: offices[fedIndices[i]].name,
                 name: officials[offices[fedIndices[i]].officialIndices[j]].name,
                 party: officials[offices[fedIndices[i]].officialIndices[j]].party,
                 image: picture,
-                phone: officials[offices[fedIndices[i]].officialIndices[j]].phones[0],
+                phone: phones,
                 social_media: {
                     facebook: facebook
                 }
@@ -266,6 +299,7 @@ function handleJson(json){
         for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
             let picture;
             let facebook;
+            let phone;
             if(officials[offices[stateIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[stateIndices[i]].officialIndices[j]].photoUrl;
             } else {
@@ -276,13 +310,18 @@ function handleJson(json){
             } else {
                 facebook = 'unknown';
             }
+            if(officials[offices[stateIndices[i]].officialIndices[j]].phones){
+                phones = officials[offices[stateIndices[i]].officialIndices[j]].phones[0];
+            } else {
+                phones = 'unknown';
+            }
 
             stateArray.push({
                 title: offices[stateIndices[i]].name,
                 name: officials[offices[stateIndices[i]].officialIndices[j]].name,
                 party: officials[offices[stateIndices[i]].officialIndices[j]].party,
                 image: picture,
-                phone: officials[offices[stateIndices[i]].officialIndices[j]].phones[0],
+                phone: phones,
                 social_media: {
                     facebook: facebook
                 }
@@ -294,6 +333,7 @@ function handleJson(json){
         for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
             let picture;
             let facebook;
+            let phones;
             if(officials[offices[localIndices[i]].officialIndices[j]].photoUrl){
                 picture = officials[offices[localIndices[i]].officialIndices[j]].photoUrl;
             } else {
@@ -304,13 +344,18 @@ function handleJson(json){
             } else {
                 facebook = 'unknown';
             }
+            if(officials[offices[localIndices[i]].officialIndices[j]].phones){
+                phones = officials[offices[localIndices[i]].officialIndices[j]].phones[0];
+            } else {
+                phones = 'unknown';
+            }
 
             localArray.push({
                 title: offices[localIndices[i]].name,
                 name: officials[offices[localIndices[i]].officialIndices[j]].name,
                 party: officials[offices[localIndices[i]].officialIndices[j]].party,
                 image: picture,
-                phone: officials[offices[localIndices[i]].officialIndices[j]].phones[0],
+                phone: phones,
                 social_media: {
                     facebook: facebook
                 }
