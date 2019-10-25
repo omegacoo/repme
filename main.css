@@ -1,5 +1,4 @@
-/* Default screen size: 360x740 */
-
+/* Galaxy S9 Portrait */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,12 +26,6 @@ header {
 
     background-color: gray;
 }
-
-main {
-    display: flex;
-    flex-direction: column;
-}
-
 
 /* Landing */
 .js-landing {
@@ -89,13 +82,14 @@ main {
 /* Representative Select */
 .js-rep-pick {
     margin-top: 30px;
-    margin-left: 1vw;
+    padding: 2vw;
+    padding-top: 0;
 
     height: 500px;
-    width: 99vw;
+    width: 100vw;
 
     display: grid;
-    grid-template-columns: 110px 110px 110px;
+    grid-template-columns: auto auto auto;
     grid-auto-rows: 110px;
     column-gap: 10px;
     row-gap: 10px;
@@ -186,12 +180,17 @@ main {
 }
 
 /* etc. */
-.back {
+.js-back-container {
     position: fixed;
 
     bottom: 20px;
-    left: 36vw;
 
+    width: 100vw;
+
+    text-align: center;
+}
+
+.back {
     width: 100px;
     height: 30px;
 
@@ -200,4 +199,255 @@ main {
 
 .hidden {
     display: none;
+}
+
+/* Galaxy S9 Landscape */
+@media only screen and (min-width: 700px) {
+    header {
+        margin-top: 5vh;
+    }
+
+    .js-back-container {
+        bottom: 10px;
+    }
+
+    .js-landing {
+        margin-top: 5vh;
+
+        height: 250px;
+    }
+
+    .js-level-select {
+        flex-direction: row;
+
+        margin-top: 25px;
+    }
+
+    .js-rep-pick {
+        margin-top: 10px;
+
+        height: 240px;
+    }
+
+    .js-rep-card {
+        margin-top: 10px;
+
+        height: 66vh;
+    }
+
+    #js-image {
+        float: left;
+        margin-left: 5px;
+
+        width: 200px;
+        height: 200px;
+    }
+
+    .js-rep-image {
+        width: 201px;
+        height: 205px;
+    }
+
+    .js-rep-card h2 {
+        margin-top: 5px;
+    }
+
+    .js-rep-contact {
+        margin-left: 38vw;
+    }
+}
+
+/* iPhone Portrait */
+@media only screen and (max-width: 668px) {
+    header {
+        margin-top: 5vh;
+    }
+
+    .js-level-button {
+        margin-bottom: 15px;
+    }
+}
+
+/* iPhone Landscape */
+@media only screen and (max-height: 400px) and (max-width: 700px) {
+    header {
+        margin-top: 5vh;
+    }
+
+    .js-back-container {
+        bottom: 10px;
+    }
+
+    .js-landing {
+        margin-top: 5vh;
+
+        height: 250px;
+    }
+
+    .js-level-select {
+        flex-direction: row;
+
+        margin-top: 25px;
+    }
+
+    .js-rep-pick {
+        margin-top: 10px;
+
+        height: 240px;
+    }
+
+    .js-rep-card {
+        margin-top: 10px;
+
+        height: 66vh;
+    }
+
+    #js-image {
+        float: left;
+        margin-left: 5px;
+
+        width: 200px;
+        height: 200px;
+    }
+
+    .js-rep-image {
+        width: 201px;
+        height: 205px;
+    }
+
+    .js-rep-card h2 {
+        margin-top: 5px;
+    }
+
+    .js-rep-contact {
+        margin-left: 38vw;
+    }
+}
+
+/* iPad Portrait */
+@media only screen and (min-width: 700px) and (min-height: 1000px) {
+    header {
+        margin-top: 20vh;
+    }
+
+    .js-landing {
+        margin-top: 20vh;
+    }
+
+    .js-level-select {
+        flex-direction: column;
+
+        margin-top: 50px;
+    }
+
+    .js-rep-pick {
+        margin-top: 20px;
+
+        height: 700px;
+    }
+
+    #js-image {
+        float: none;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+    }
+
+    .js-rep-card h2 {
+        margin-top: 30px;
+        font-size: 50px;
+    }
+
+    .js-rep-card h3 {
+        font-size: 35px;
+    }
+
+    #js-left, #js-right {
+        height: 60vh;
+    }
+
+    .js-rep-contact {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 40px;
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 1000px) and (min-height: 400px) {
+    header {
+        margin-top: 10vh;
+    }
+
+    .js-back-container {
+        bottom: 30px;
+    }
+
+    .js-landing {
+        margin-top: 20vh;
+    }
+
+    .js-level-select {
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 50vw;
+    }
+
+    .js-rep-pick {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0;
+
+        width: 50vw;
+
+        height: 600px;
+    }
+
+    .js-rep-card {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        width: 50vw;
+    }
+
+    #js-image {
+        float: none;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+
+        width: 250px;
+        height: 250px;
+    }
+
+    .js-rep-image {
+        width: 251px;
+        height: 255px;
+    }
+
+    .js-rep-card h2 {
+        margin-top: 5px;
+        font-size: 50px;
+    }
+
+    .js-rep-card h3 {
+        font-size: 35px;
+    }
+
+    #js-left, #js-right {
+        height: 60vh;
+    }
+
+    .js-rep-contact {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
 }
