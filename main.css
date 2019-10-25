@@ -320,7 +320,7 @@ header {
     }
 
     .js-rep-contact {
-        margin-left: 38vw;
+        max-width: 300px;
     }
 }
 
@@ -375,7 +375,7 @@ header {
 }
 
 /* iPad Landscape */
-@media only screen and (max-width: 1100px) and (max-height: 800px) {
+@media only screen and (min-width: 1000px) and (min-height: 700px) {
     header {
         margin-top: 10vh;
     }
@@ -405,7 +405,7 @@ header {
 
         width: 50vw;
 
-        height: 600px;
+        height: 500px;
     }
 
     .js-rep-card {
@@ -428,8 +428,8 @@ header {
     }
 
     .js-rep-image {
-        width: 251px;
-        height: 255px;
+        width: 201px;
+        height: 205px;
     }
 
     .js-rep-card h2 {
@@ -453,7 +453,7 @@ header {
 }
 
 /* Desktop */
-@media only screen and (min-width: 1101px) and (min-height: 801px) {
+@media only screen and (min-width: 1100px) and (min-height: 800px) {
     header {
         margin-top: 10vh;
     }
