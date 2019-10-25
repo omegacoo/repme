@@ -226,7 +226,7 @@ header {
     .js-rep-pick {
         margin-top: 10px;
 
-        height: 240px;
+        height: 220px;
     }
 
     .js-rep-card {
@@ -235,9 +235,14 @@ header {
         height: 66vh;
     }
 
+    #js-left, #js-right {
+        height: 170px;
+    }
+
     #js-image {
         float: left;
         margin-left: 5px;
+        margin-top: 3px;
 
         width: 200px;
         height: 200px;
