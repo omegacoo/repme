@@ -258,7 +258,7 @@ header {
 }
 
 /* iPhone Portrait */
-@media only screen and (max-width: 668px) {
+/* @media only screen and (max-width: 668px) {
     header {
         margin-top: 5vh;
     }
@@ -266,10 +266,10 @@ header {
     .js-level-button {
         margin-bottom: 15px;
     }
-}
+} */
 
 /* iPhone Landscape */
-@media only screen and (max-height: 400px) and (max-width: 700px) {
+/* @media only screen and (max-height: 400px) and (max-width: 700px) {
     header {
         margin-top: 5vh;
     }
@@ -322,7 +322,7 @@ header {
     .js-rep-contact {
         max-width: 300px;
     }
-}
+} */
 
 /* iPad Portrait */
 @media only screen and (min-width: 700px) and (min-height: 1000px) {
