@@ -234,8 +234,6 @@ function handleJson(json){
         };
     };
 
-    console.log(json);
-
     for(let i = 0; i < fedIndices.length; i++){
         for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
             let picture;
