@@ -338,6 +338,9 @@ function getResults(query){
     fetch(url)
         .then(response => {
             if(response.ok){
+                STATE.SCREEN = screens.LEVEL_SELECT;
+                updateScreen();
+                
                 return response.json();
             }
             throw new Error(response.statusText);
@@ -347,6 +350,8 @@ function getResults(query){
         })
         .catch(err => {
             alert(err);
+            STATE.SCREEN = screens.LANDING;
+            updateScreen();
         });
 };
 
@@ -360,8 +365,6 @@ function onAddressSubmit(){
         localArray = [];
 
         getResults($('#js-address').val());
-        STATE.SCREEN = screens.LEVEL_SELECT;
-        updateScreen();
     });
 };
 
