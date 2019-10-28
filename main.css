@@ -64,6 +64,10 @@ header {
     display: block;
 }
 
+#js-address {
+    border-radius: 15px;
+}
+
 #js-form button {
     display: block;
 
