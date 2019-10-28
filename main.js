@@ -78,7 +78,6 @@ function fillRepCard(){
             $('#name').text(fedArray[STATE.REP].name);
             $('#party').text(fedArray[STATE.REP].party);
             $('#js-image').html(`<img class="js-rep-image" src="${fedArray[STATE.REP].image}" alt="${fedArray[STATE.REP].name}">`);
-            $('#phone').text(`Phone: ${fedArray[STATE.REP].phone}`);
             if(fedArray[STATE.REP].social_media.facebook !== 'unknown'){
                 $('#facebook').text(`Facebook: `)
                     .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].social_media.facebook}" 
@@ -90,10 +89,7 @@ function fillRepCard(){
             };
             if(fedArray[STATE.REP].phone !== 'unknown'){
                 $('#phone').text(`Phone: `)
-                    .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].phone}" 
-                                target="_blank">
-                                    ${fedArray[STATE.REP].phone}
-                            </a>`);
+                    .append(`${stateArray[STATE.REP].phone}`);
             } else {
                 $('#phone').text('Phone: unknown');
             };
@@ -103,7 +99,6 @@ function fillRepCard(){
             $('#name').text(stateArray[STATE.REP].name);
             $('#party').text(stateArray[STATE.REP].party);
             $('#js-image').html(`<img class="js-rep-image" src="${stateArray[STATE.REP].image}" alt="${stateArray[STATE.REP].name}">`);
-            $('#phone').text(`Phone: ${stateArray[STATE.REP].phone}`);
             if(stateArray[STATE.REP].social_media.facebook !== 'unknown'){
                 $('#facebook').text(`Facebook: `)
                     .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].social_media.facebook}" 
@@ -115,10 +110,7 @@ function fillRepCard(){
             };
             if(stateArray[STATE.REP].phone !== 'unknown'){
                 $('#phone').text(`Phone: `)
-                    .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].phone}" 
-                                target="_blank">
-                                    ${stateArray[STATE.REP].phone}
-                            </a>`);
+                    .append(`${stateArray[STATE.REP].phone}`);
             } else {
                 $('#phone').text('Phone: unknown');
             };
