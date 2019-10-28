@@ -413,6 +413,12 @@ function onAddressSubmit(){
     });
 };
 
+function onAddressFocus(){
+    $('#js-address').on('click', function(e){
+        $('#js-address').val('');
+    });
+};
+
 // Draw the screen depending on the current STATE
 function updateScreen(){  
 
@@ -452,6 +458,7 @@ function updateScreen(){
 
 function App(){
     updateScreen();
+    onAddressFocus();
     onAddressSubmit();
     onBackClick();
     onLevelSelect();
