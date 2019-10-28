@@ -1,20 +1,30 @@
+:root {
+    --main-bg-color: #9ed0e6;
+    --main-txt-color: #1A4F65;
+    --hover-button-color: #349ECB;
+}
+
 /* Galaxy S9 Portrait */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    font-family: 'Cinzel';
 }
 
 body {
-    font-family: 'Roboto Mono';
-
     display: flex;
     flex-direction: column;
+
+    background-color: var(--main-bg-color);
 }
 
 h1 {
     font-size: 30px;
     font-weight: bolder;
+
+    color: var(--main-txt-color);
 }
 
 header {
@@ -23,8 +33,6 @@ header {
     margin-right: auto;
 
     text-align: center;
-
-    background-color: gray;
 }
 
 /* Landing */
@@ -33,7 +41,8 @@ header {
     margin-left: auto;
     margin-right: auto;
 
-    background-color: gray;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
 
     text-align: center;
 
@@ -42,6 +51,8 @@ header {
 
     border: 2px solid black;
     border-radius: 30px;
+
+    box-shadow: 3px 3px black;
 }
 
 #js-form {
@@ -58,6 +69,11 @@ header {
     
     width: 100px;
     height: 50px;
+
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+
+    border-radius: 15px;
 }
 
 /* Level Select */
@@ -70,12 +86,15 @@ header {
     width: 130px;
     height: 130px;
 
-    background-color: gray;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
 
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+
+    border-radius: 15px;
 }
 
 
@@ -99,25 +118,33 @@ header {
 
 .js-rep-button {
     overflow: hidden;
+
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+
+    border-radius: 15px;
 }
 
 /* Representative Card */
 .js-rep-card {
     margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-right: 5px;
 
     border: 2px solid black;
     border-radius: 30px;
+    
+    box-shadow: 3px 3px black;
 
-    height: 55vh;
-    width: 90vw;
-
-    background-color: gray;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
 
     text-align: center;
 
     overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
 }
 
 #js-image {
@@ -126,14 +153,10 @@ header {
     
     width: 130px;
     height: 130px;
-    
-    text-align: center;
 
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-
-    background-color: white;
 
     overflow: hidden;
 }
@@ -151,26 +174,38 @@ header {
 }
 
 #js-left, #js-right {
-    height: 200px;
-    margin-top: 20px;
+    height: auto;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 25px;
+
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+
+    font-size: 20px;
+
+    border: none;
 }
 
 #js-left {
-    float: left;
+    border-right: 2px dashed var(--main-txt-color);
 }
 
 #js-right {
-    float: right;
+    border-left: 2px dashed var(--main-txt-color);
 }
 
 .js-rep-contact {
     display: inline-block;
 
     background-color: white;
+    color: var(--main-txt-color);
 
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
+    margin-bottom: 20px;
 
     border-radius: 15px;
 
@@ -193,11 +228,22 @@ header {
     width: 100px;
     height: 30px;
 
-    background-color: gray;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+
+    border-radius: 15px;
 }
 
 .hidden {
     display: none;
+}
+
+button {
+    font-weight: bold;
+}
+
+button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
+    background-color: var(--hover-button-color);
 }
 
 /* Galaxy S9 Landscape */
@@ -234,14 +280,16 @@ header {
         height: 60vh;
     }
 
-    #js-left, #js-right {
-        height: 170px;
+    #js-center {
+        display: block;
+
+        width: 100%;
     }
 
     #js-image {
         float: left;
         margin-left: 5px;
-        margin-top: 3px;
+        margin-top: 5px;
 
         width: 200px;
         height: 200px;
@@ -256,73 +304,6 @@ header {
         margin-top: 5px;
     }
 }
-
-/* iPhone Portrait */
-/* @media only screen and (max-width: 668px) {
-    header {
-        margin-top: 5vh;
-    }
-
-    .js-level-button {
-        margin-bottom: 15px;
-    }
-} */
-
-/* iPhone Landscape */
-/* @media only screen and (max-height: 400px) and (max-width: 700px) {
-    header {
-        margin-top: 5vh;
-    }
-
-    .js-back-container {
-        bottom: 10px;
-    }
-
-    .js-landing {
-        margin-top: 5vh;
-
-        height: 250px;
-    }
-
-    .js-level-select {
-        flex-direction: row;
-
-        margin-top: 25px;
-    }
-
-    .js-rep-pick {
-        margin-top: 10px;
-
-        height: 240px;
-    }
-
-    .js-rep-card {
-        margin-top: 10px;
-
-        height: 66vh;
-    }
-
-    #js-image {
-        float: left;
-        margin-left: 5px;
-
-        width: 200px;
-        height: 200px;
-    }
-
-    .js-rep-image {
-        width: 201px;
-        height: 205px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-    }
-
-    .js-rep-contact {
-        max-width: 300px;
-    }
-} */
 
 /* iPad Portrait */
 @media only screen and (min-width: 700px) and (min-height: 1000px) {
@@ -346,6 +327,10 @@ header {
         height: 700px;
     }
 
+    .js-rep-card {
+        height: auto;
+    }
+
     #js-image {
         float: none;
 
@@ -363,14 +348,11 @@ header {
         font-size: 35px;
     }
 
-    #js-left, #js-right {
-        height: 60vh;
-    }
-
     .js-rep-contact {
         margin-left: auto;
         margin-right: auto;
         margin-top: 40px;
+        margin-bottom: 40px;
     }
 }
 
@@ -414,6 +396,7 @@ header {
         margin-right: auto;
 
         width: 80vw;
+        height: auto;
     }
 
     #js-image {
@@ -439,10 +422,6 @@ header {
 
     .js-rep-card h3 {
         font-size: 35px;
-    }
-
-    #js-left, #js-right {
-        height: 60vh;
     }
 
     .js-rep-contact {
