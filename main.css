@@ -242,7 +242,7 @@ button {
     font-weight: bold;
 }
 
-button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
+button:active, #js-left:active , #js-right:active, #js-form button:active {
     background-color: var(--hover-button-color);
 }
 
@@ -506,5 +506,9 @@ button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
         margin-left: auto;
         margin-right: auto;
         margin-top: 10px;
+    }
+
+    button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
+        background-color: var(--hover-button-color);
     }
 }
