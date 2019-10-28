@@ -55,9 +55,13 @@ header {
     box-shadow: 3px 3px black;
 }
 
+#tip {
+    margin-top: 30%;
+    font-size: 10px;
+}
+
 #js-form {
     display: block;
-    margin-top: 100px;
 }
 
 #js-form button {
