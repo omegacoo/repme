@@ -242,10 +242,6 @@ button {
     font-weight: bold;
 }
 
-button:active, #js-left:active , #js-right:active, #js-form button:active {
-    background-color: var(--hover-button-color);
-}
-
 /* Galaxy S9 Landscape */
 @media only screen and (min-width: 700px) {
     header {
