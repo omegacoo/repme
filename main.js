@@ -51,9 +51,9 @@ function leftArrow(){
 
 function rightArrow(){
     $('#js-right').on('click', function(){
-        let repArr = getLevelArray();
+        let currentArray = getLevelArray();
 
-        if(STATE.REP < repArr.length - 1){
+        if(STATE.REP < currentArray.length - 1){
             STATE.REP += 1
             fillRepCard();
             updateScreen();
@@ -117,7 +117,7 @@ function fillRepCard(){
 
 // Handle rep pick
 function onRepPick(){
-    $('.js-rep-pick').on('click', 'button', function(e){
+    $('.js-rep-pick').on('click', 'button', function(){
         STATE.SCREEN = screens.REP_CARD;
         STATE.REP = parseInt(this.id);
         updateScreen();
@@ -126,34 +126,14 @@ function onRepPick(){
 
 // Create the Rep buttons
 function getReps(){
-    switch(STATE.LEVEL){
-        case 'federal':
-            for(let i = 0; i < fedArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${fedArray[i].title}
-                    </button>`
-                );
-            };
-            break;
-        case 'state':
-            for(let i = 0; i < stateArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${stateArray[i].title}
-                    </button>`
-                ); 
-            };
-            break;
-        case 'local':
-            for(let i = 0; i < localArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${localArray[i].title}
-                    </button>`
-                );
-            };
-            break;
+    let currentArray = getLevelArray();
+
+    for(let i = 0; i < currentArray.length; i++){
+        $('.js-rep-pick').append(
+            `<button id="${i}" class="js-rep-button">
+                ${currentArray[i].title}
+            </button>`
+        );
     };
 };
 
