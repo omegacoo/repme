@@ -4,9 +4,9 @@ const flagImage = 'https://www.pixelstalk.net/wp-content/uploads/images1/Downloa
 
 const screens = Object.freeze({
     LANDING: 'landing',
-    LEVEL_SELECT: 'level_select',
-    REP_PICK: 'rep_pick',
-    REP_CARD: 'rep_card'
+    LEVEL_SELECT: 'level-select',
+    REP_PICK: 'rep-pick',
+    REP_CARD: 'rep-card'
 });
 
 const levels = Object.freeze({
@@ -22,10 +22,14 @@ const STATE = {
 };
 
 let fedArray = [];
-
 let stateArray = [];
-
 let localArray = [];
+
+function resetArrays(){
+    fedArray = [];
+    stateArray = [];
+    localArray = [];
+};
 
 function getLevelArray(){
     switch(STATE.LEVEL){
@@ -120,6 +124,7 @@ function onRepPick(){
     $('.js-rep-pick').on('click', 'button', function(){
         STATE.SCREEN = screens.REP_CARD;
         STATE.REP = parseInt(this.id);
+        fillRepCard();
         updateScreen();
     });
 };
@@ -161,14 +166,14 @@ function onLevelSelect(){
 function onBackClick(){
     $('.back').on('click', function(e){
         switch(STATE.SCREEN){
-            case 'level_select':
+            case 'level-select':
                 STATE.SCREEN = screens.LANDING;
                 break;
-            case 'rep_pick':
+            case 'rep-pick':
                 STATE.SCREEN = screens.LEVEL_SELECT;
                 $('.js-rep-pick').empty();
                 break;
-            case 'rep_card':
+            case 'rep-card':
                 STATE.SCREEN = screens.REP_PICK
                 break;
         }
@@ -311,9 +316,7 @@ function onAddressSubmit(){
     $('#js-form').on('submit', function(e){
         e.preventDefault();
 
-        fedArray = [];
-        stateArray = [];
-        localArray = [];
+        resetArrays();
 
         getResults($('#js-address').val());
     });
@@ -326,43 +329,33 @@ function onAddressFocus(){
 };
 
 // Draw the screen depending on the current STATE
-function updateScreen(){  
+function updateScreen(){
+    const screens = ['landing', 'level-select', 'rep-pick', 'rep-card'];
 
-    switch(STATE.SCREEN){
-        case 'landing':
-            $('.js-landing').removeClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').addClass('hidden');
-            break;
-        case 'level_select':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').removeClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').removeClass('hidden');
-            break;
-        case 'rep_pick':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').removeClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').removeClass('hidden');
-            break;
-        case 'rep_card':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').removeClass('hidden');
-            $('.back').removeClass('hidden');
+    for(let i = 0; i < screens.length; i++){
+        if(screens[i] === STATE.SCREEN){
+            $(`.js-${screens[i]}`).removeClass('hidden');
+        } else {
+            $(`.js-${screens[i]}`).addClass('hidden');
+        };
+    };
 
-            fillRepCard();
-            break;
+    if(STATE.SCREEN === 'landing'){
+        $('.back').addClass('hidden');
+    } else {
+        $('.back').removeClass('hidden');
     };
 };
 
+function initializeScreens(){
+    $('.js-level-select').addClass('hidden');
+    $('.js-rep-pick').addClass('hidden');
+    $('.js-rep-card').addClass('hidden');
+    $('.back').addClass('hidden');
+};
+
 function App(){
+    initializeScreens();
     updateScreen();
     onAddressFocus();
     onAddressSubmit();
