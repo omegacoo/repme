@@ -205,7 +205,7 @@ function getRemainingIndices(offices, firstIndices, secondIndices){
     };
 
     return indices;
-}
+};
 
 function handleJson(json){
     let divisions = json.divisions;
@@ -279,7 +279,7 @@ function formatQuery(params){
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
     return queryItems.join('&');
-}
+};
 
 // Query the API
 function getResults(query){
@@ -356,7 +356,6 @@ function initializeScreens(){
 
 function App(){
     initializeScreens();
-    updateScreen();
     onAddressFocus();
     onAddressSubmit();
     onBackClick();
