@@ -55,8 +55,14 @@ header {
     box-shadow: 3px 3px black;
 }
 
+#error {
+    margin-top: 15px;
+    color: red;
+    font-weight: bolder;
+}
+
 #tip {
-    margin-top: 30%;
+    margin-top: 20%;
     font-size: 10px;
 }
 

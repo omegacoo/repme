@@ -305,10 +305,15 @@ function getResults(query){
             handleJson(responseJson);
         })
         .catch(err => {
-            console.log(err);
+            errorHandle(err);
             STATE.SCREEN = screens.LANDING;
             updateScreen();
         });
+};
+
+// Handle incorrect input
+function errorHandle(error){
+    $('#error').text(error);
 };
 
 // Handle address form submit
