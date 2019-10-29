@@ -4,9 +4,9 @@ const flagImage = 'https://www.pixelstalk.net/wp-content/uploads/images1/Downloa
 
 const screens = Object.freeze({
     LANDING: 'landing',
-    LEVEL_SELECT: 'level_select',
-    REP_PICK: 'rep_pick',
-    REP_CARD: 'rep_card'
+    LEVEL_SELECT: 'level-select',
+    REP_PICK: 'rep-pick',
+    REP_CARD: 'rep-card'
 });
 
 const levels = Object.freeze({
@@ -22,165 +22,123 @@ const STATE = {
 };
 
 let fedArray = [];
-
 let stateArray = [];
-
 let localArray = [];
 
-// Handle card swap
-function onCardSwap(){
-    let repArr;
+function resetArrays(){
+    fedArray = [];
+    stateArray = [];
+    localArray = [];
+};
 
-    $('#js-right').on('click', function(){
-        switch(STATE.LEVEL){
-            case 'federal':
-                repArr = fedArray;
-                break;
-            case 'state':
-                repArr = stateArray;
-                break;
-            case 'local':
-                repArr = localArray;
-                break;
-        };
-        if(STATE.REP < repArr.length - 1){
-            STATE.REP += 1
-            fillRepCard();
-            updateScreen();
-        }
-    })
+function getLevelArray(){
+    switch(STATE.LEVEL){
+        case 'federal':
+            return fedArray;
+        case 'state':
+            return stateArray;
+        case 'local':
+            return localArray;
+    };
+};
+
+// Handle card swap
+function leftArrow(){
     $('#js-left').on('click', function(){
-        switch(STATE.LEVEL){
-            case 'federal':
-                repArr = fedArray;
-                break;
-            case 'state':
-                repArr = stateArray;
-                break;
-            case 'local':
-                repArr = localArray;
-                break;
-        };
         if(STATE.REP > 0){
             STATE.REP -= 1
             fillRepCard();
             updateScreen();
-        }
-    })
-}
+        };
+    });
+};
+
+function rightArrow(){
+    $('#js-right').on('click', function(){
+        let currentArray = getLevelArray();
+
+        if(STATE.REP < currentArray.length - 1){
+            STATE.REP += 1
+            fillRepCard();
+            updateScreen();
+        };
+    });
+};
+
+function onCardSwap(){
+    rightArrow();
+    leftArrow();
+};
 
 // Populate Rep Card
+function setRepCardTitle(currentArray){
+    $('#title').text(currentArray[STATE.REP].title);
+};
+
+function setRepCardName(currentArray){
+    $('#name').text(currentArray[STATE.REP].name);
+};
+
+function setRepCardParty(currentArray){
+    $('#party').text(currentArray[STATE.REP].party);
+};
+
+function setRepCardImage(currentArray){
+    $('#js-image').html(`<img class="js-rep-image" src="${currentArray[STATE.REP].image}" alt="${currentArray[STATE.REP].name}">`);
+};
+
+function setRepCardFacebook(currentArray){
+    if(currentArray[STATE.REP].social_media.facebook !== 'unknown'){
+        $('#facebook').text(`Facebook: `)
+            .append(`<a href="https://www.facebook.com/${currentArray[STATE.REP].social_media.facebook}" 
+                        target="_blank">
+                            ${currentArray[STATE.REP].social_media.facebook}
+                    </a>`);
+    } else {
+        $('#facebook').text('Facebook: unknown');
+    };
+};
+
+function setRepCardPhone(currentArray){
+    if(currentArray[STATE.REP].phone !== 'unknown'){
+        $('#phone').text(`Phone: `)
+            .append(`${currentArray[STATE.REP].phone}`);
+    } else {
+        $('#phone').text('Phone: unknown');
+    };
+};
+
 function fillRepCard(){
-    switch(STATE.LEVEL){
-        case 'federal':
-            $('#title').text(fedArray[STATE.REP].title);
-            $('#name').text(fedArray[STATE.REP].name);
-            $('#party').text(fedArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${fedArray[STATE.REP].image}" alt="${fedArray[STATE.REP].name}">`);
-            if(fedArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${fedArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(fedArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`${stateArray[STATE.REP].phone}`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-        case 'state':
-            $('#title').text(stateArray[STATE.REP].title);
-            $('#name').text(stateArray[STATE.REP].name);
-            $('#party').text(stateArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${stateArray[STATE.REP].image}" alt="${stateArray[STATE.REP].name}">`);
-            if(stateArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${stateArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(stateArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`${stateArray[STATE.REP].phone}`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-        case 'local':
-            $('#title').text(localArray[STATE.REP].title);
-            $('#name').text(localArray[STATE.REP].name);
-            $('#party').text(localArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${localArray[STATE.REP].image}" alt="${localArray[STATE.REP].name}">`);
-            $('#phone').text(`Phone: ${localArray[STATE.REP].phone}`);
-            if(localArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${localArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(localArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].phone}" 
-                                target="_blank">
-                                    ${localArray[STATE.REP].phone}
-                            </a>`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-    }
-}
+    let currentArray = getLevelArray();
+
+    setRepCardTitle(currentArray);
+    setRepCardName(currentArray);
+    setRepCardParty(currentArray);
+    setRepCardImage(currentArray);
+    setRepCardFacebook(currentArray);
+    setRepCardPhone(currentArray);
+};
 
 // Handle rep pick
 function onRepPick(){
-    $('.js-rep-pick').on('click', 'button', function(e){
+    $('.js-rep-pick').on('click', 'button', function(){
         STATE.SCREEN = screens.REP_CARD;
         STATE.REP = parseInt(this.id);
+        fillRepCard();
         updateScreen();
     });
 };
 
 // Create the Rep buttons
 function getReps(){
-    switch(STATE.LEVEL){
-        case 'federal':
-            for(let i = 0; i < fedArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${fedArray[i].title}
-                    </button>`
-                );
-            };
-            break;
-        case 'state':
-            for(let i = 0; i < stateArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${stateArray[i].title}
-                    </button>`
-                ); 
-            };
-            break;
-        case 'local':
-            for(let i = 0; i < localArray.length; i++){
-                $('.js-rep-pick').append(
-                    `<button id="${i}" class="js-rep-button">
-                        ${localArray[i].title}
-                    </button>`
-                );
-            };
-            break;
+    let currentArray = getLevelArray();
+
+    for(let i = 0; i < currentArray.length; i++){
+        $('.js-rep-pick').append(
+            `<button id="${i}" class="js-rep-button">
+                ${currentArray[i].title}
+            </button>`
+        );
     };
 };
 
@@ -208,14 +166,14 @@ function onLevelSelect(){
 function onBackClick(){
     $('.back').on('click', function(e){
         switch(STATE.SCREEN){
-            case 'level_select':
+            case 'level-select':
                 STATE.SCREEN = screens.LANDING;
                 break;
-            case 'rep_pick':
+            case 'rep-pick':
                 STATE.SCREEN = screens.LEVEL_SELECT;
                 $('.js-rep-pick').empty();
                 break;
-            case 'rep_card':
+            case 'rep-card':
                 STATE.SCREEN = screens.REP_PICK
                 break;
         }
@@ -223,128 +181,90 @@ function onBackClick(){
     });
 };
 
+// Parse API data
+function getIndices(offices){
+    let indices = [];
+
+    for(let i = 0; i < offices.length; i++){
+        indices.push(offices[i]);
+    };
+
+    return indices;
+};
+
+function getRemainingIndices(offices, firstIndices, secondIndices){
+    let indices = [];
+
+    for(let i = 0; i < offices.length; i++){
+        let foundFed = firstIndices.indexOf(i);
+        let foundState = secondIndices.indexOf(i);
+
+        if(foundFed === -1 && foundState === -1){
+            indices.push(i)
+        };
+    };
+
+    return indices;
+}
+
 function handleJson(json){
     let divisions = json.divisions;
     let offices = json.offices;
     let officials = json.officials;
+    
     let fedOffices = divisions['ocd-division/country:us'].officeIndices;
     let state = json.normalizedInput.state.toLowerCase();
     let stateOffices = divisions[`ocd-division/country:us/state:${state}`].officeIndices;
     
-    let fedIndices = [];
-    let stateIndices = [];
-    let localIndices = [];
+    let fedIndices = getIndices(fedOffices);
+    let stateIndices = getIndices(stateOffices);
+    let localIndices = getRemainingIndices(offices, fedIndices, stateIndices);
 
-    for(let i = 0; i < fedOffices.length; i++){
-        fedIndices.push(fedOffices[i]);
-    };
-    for(let i = 0; i < stateOffices.length; i++){
-        stateIndices.push(stateOffices[i]);
-    };
+    let total = fedIndices.length + stateIndices.length + localIndices.length;
 
-    // Put all indices not in either fedIndices or stateIndices into localIndices
-    for(let i = 0; i < offices.length; i++){
-        let foundFed = fedIndices.indexOf(i);
-        let foundState = stateIndices.indexOf(i);
+    for(let i = 0; i < total; i++){
+        let currentIndices;
+        let currentArray;
+        let currentIndex;
 
-        if(foundFed === -1 && foundState === -1){
-            localIndices.push(i)
+        if(i < fedIndices.length){
+            currentIndices = fedIndices;
+            currentArray = fedArray;
+            currentIndex = i;
+        } else if(i < fedIndices.length + stateIndices.length){
+            currentIndices = stateIndices;
+            currentArray = stateArray;
+            currentIndex = i - fedIndices.length;
+        } else {
+            currentIndices = localIndices;
+            currentArray = localArray;
+            currentIndex = i - (fedIndices.length + stateIndices.length);
         };
-    };
 
-    for(let i = 0; i < fedIndices.length; i++){
-        for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
+        for(let j = 0; j < offices[currentIndices[currentIndex]].officialIndices.length; j++){
             let picture;
             let facebook;
             let phones;
-            if(officials[offices[fedIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[fedIndices[i]].officialIndices[j]].photoUrl;
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl){
+                picture = officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
-            if(officials[offices[fedIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[fedIndices[i]].officialIndices[j]].channels[0].id;
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].channels){
+                facebook = officials[offices[currentIndices[currentIndex]].officialIndices[j]].channels[0].id;
             } else {
                 facebook = 'unknown';
             }
-            if(officials[offices[fedIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[fedIndices[i]].officialIndices[j]].phones[0];
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].phones){
+                phones = officials[offices[currentIndices[currentIndex]].officialIndices[j]].phones[0];
             } else {
                 phones = 'unknown';
-            }
-
-            fedArray.push({
-                title: offices[fedIndices[i]].name,
-                name: officials[offices[fedIndices[i]].officialIndices[j]].name,
-                party: officials[offices[fedIndices[i]].officialIndices[j]].party,
-                image: picture,
-                phone: phones,
-                social_media: {
-                    facebook: facebook
-                }
-            })
-        };
-    };
-
-    for(let i = 0; i < stateIndices.length; i++){
-        for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
-            let picture;
-            let facebook;
-            let phone;
-            if(officials[offices[stateIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[stateIndices[i]].officialIndices[j]].photoUrl;
-            } else {
-                picture = flagImage;
             };
-            if(officials[offices[stateIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[stateIndices[i]].officialIndices[j]].channels[0].id;
-            } else {
-                facebook = 'unknown';
-            }
-            if(officials[offices[stateIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[stateIndices[i]].officialIndices[j]].phones[0];
-            } else {
-                phones = 'unknown';
-            }
 
-            stateArray.push({
-                title: offices[stateIndices[i]].name,
-                name: officials[offices[stateIndices[i]].officialIndices[j]].name,
-                party: officials[offices[stateIndices[i]].officialIndices[j]].party,
-                image: picture,
-                phone: phones,
-                social_media: {
-                    facebook: facebook
-                }
-            });
-        };
-    };
-
-    for(let i = 0; i < localIndices.length; i++){
-        for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
-            let picture;
-            let facebook;
-            let phones;
-            if(officials[offices[localIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[localIndices[i]].officialIndices[j]].photoUrl;
-            } else {
-                picture = flagImage;
-            };
-            if(officials[offices[localIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[localIndices[i]].officialIndices[j]].channels[0].id;
-            } else {
-                facebook = 'unknown';
-            }
-            if(officials[offices[localIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[localIndices[i]].officialIndices[j]].phones[0];
-            } else {
-                phones = 'unknown';
-            }
-
-            localArray.push({
-                title: offices[localIndices[i]].name,
-                name: officials[offices[localIndices[i]].officialIndices[j]].name,
-                party: officials[offices[localIndices[i]].officialIndices[j]].party,
+            currentArray.push({
+                title: offices[currentIndices[currentIndex]].name,
+                name: officials[offices[currentIndices[currentIndex]].officialIndices[j]].name,
+                party: officials[offices[currentIndices[currentIndex]].officialIndices[j]].party,
                 image: picture,
                 phone: phones,
                 social_media: {
@@ -385,7 +305,7 @@ function getResults(query){
             handleJson(responseJson);
         })
         .catch(err => {
-            alert(err);
+            console.log(err);
             STATE.SCREEN = screens.LANDING;
             updateScreen();
         });
@@ -396,9 +316,7 @@ function onAddressSubmit(){
     $('#js-form').on('submit', function(e){
         e.preventDefault();
 
-        fedArray = [];
-        stateArray = [];
-        localArray = [];
+        resetArrays();
 
         getResults($('#js-address').val());
     });
@@ -411,43 +329,33 @@ function onAddressFocus(){
 };
 
 // Draw the screen depending on the current STATE
-function updateScreen(){  
+function updateScreen(){
+    const screens = ['landing', 'level-select', 'rep-pick', 'rep-card'];
 
-    switch(STATE.SCREEN){
-        case 'landing':
-            $('.js-landing').removeClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').addClass('hidden');
-            break;
-        case 'level_select':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').removeClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').removeClass('hidden');
-            break;
-        case 'rep_pick':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').removeClass('hidden');
-            $('.js-rep-card').addClass('hidden');
-            $('.back').removeClass('hidden');
-            break;
-        case 'rep_card':
-            $('.js-landing').addClass('hidden');
-            $('.js-level-select').addClass('hidden');
-            $('.js-rep-pick').addClass('hidden');
-            $('.js-rep-card').removeClass('hidden');
-            $('.back').removeClass('hidden');
+    for(let i = 0; i < screens.length; i++){
+        if(screens[i] === STATE.SCREEN){
+            $(`.js-${screens[i]}`).removeClass('hidden');
+        } else {
+            $(`.js-${screens[i]}`).addClass('hidden');
+        };
+    };
 
-            fillRepCard();
-            break;
+    if(STATE.SCREEN === 'landing'){
+        $('.back').addClass('hidden');
+    } else {
+        $('.back').removeClass('hidden');
     };
 };
 
+function initializeScreens(){
+    $('.js-level-select').addClass('hidden');
+    $('.js-rep-pick').addClass('hidden');
+    $('.js-rep-card').addClass('hidden');
+    $('.back').addClass('hidden');
+};
+
 function App(){
+    initializeScreens();
     updateScreen();
     onAddressFocus();
     onAddressSubmit();
