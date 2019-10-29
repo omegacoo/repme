@@ -27,7 +27,6 @@ let stateArray = [];
 
 let localArray = [];
 
-// Handle card swap
 function getLevelArray(){
     switch(STATE.LEVEL){
         case 'federal':
@@ -39,6 +38,7 @@ function getLevelArray(){
     };
 };
 
+// Handle card swap
 function leftArrow(){
     $('#js-left').on('click', function(){
         if(STATE.REP > 0){
@@ -67,77 +67,53 @@ function onCardSwap(){
 };
 
 // Populate Rep Card
+function setRepCardTitle(currentArray){
+    $('#title').text(currentArray[STATE.REP].title);
+};
+
+function setRepCardName(currentArray){
+    $('#name').text(currentArray[STATE.REP].name);
+};
+
+function setRepCardParty(currentArray){
+    $('#party').text(currentArray[STATE.REP].party);
+};
+
+function setRepCardImage(currentArray){
+    $('#js-image').html(`<img class="js-rep-image" src="${currentArray[STATE.REP].image}" alt="${currentArray[STATE.REP].name}">`);
+};
+
+function setRepCardFacebook(currentArray){
+    if(currentArray[STATE.REP].social_media.facebook !== 'unknown'){
+        $('#facebook').text(`Facebook: `)
+            .append(`<a href="https://www.facebook.com/${currentArray[STATE.REP].social_media.facebook}" 
+                        target="_blank">
+                            ${currentArray[STATE.REP].social_media.facebook}
+                    </a>`);
+    } else {
+        $('#facebook').text('Facebook: unknown');
+    };
+};
+
+function setRepCardPhone(currentArray){
+    if(currentArray[STATE.REP].phone !== 'unknown'){
+        $('#phone').text(`Phone: `)
+            .append(`${currentArray[STATE.REP].phone}`);
+    } else {
+        $('#phone').text('Phone: unknown');
+    };
+};
+
 function fillRepCard(){
-    switch(STATE.LEVEL){
-        case 'federal':
-            $('#title').text(fedArray[STATE.REP].title);
-            $('#name').text(fedArray[STATE.REP].name);
-            $('#party').text(fedArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${fedArray[STATE.REP].image}" alt="${fedArray[STATE.REP].name}">`);
-            if(fedArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${fedArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${fedArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(fedArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`${stateArray[STATE.REP].phone}`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-        case 'state':
-            $('#title').text(stateArray[STATE.REP].title);
-            $('#name').text(stateArray[STATE.REP].name);
-            $('#party').text(stateArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${stateArray[STATE.REP].image}" alt="${stateArray[STATE.REP].name}">`);
-            if(stateArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${stateArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${stateArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(stateArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`${stateArray[STATE.REP].phone}`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-        case 'local':
-            $('#title').text(localArray[STATE.REP].title);
-            $('#name').text(localArray[STATE.REP].name);
-            $('#party').text(localArray[STATE.REP].party);
-            $('#js-image').html(`<img class="js-rep-image" src="${localArray[STATE.REP].image}" alt="${localArray[STATE.REP].name}">`);
-            $('#phone').text(`Phone: ${localArray[STATE.REP].phone}`);
-            if(localArray[STATE.REP].social_media.facebook !== 'unknown'){
-                $('#facebook').text(`Facebook: `)
-                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].social_media.facebook}" 
-                                target="_blank">
-                                    ${localArray[STATE.REP].social_media.facebook}
-                            </a>`);
-            } else {
-                $('#facebook').text('Facebook: unknown');
-            };
-            if(localArray[STATE.REP].phone !== 'unknown'){
-                $('#phone').text(`Phone: `)
-                    .append(`<a href="https://www.facebook.com/${localArray[STATE.REP].phone}" 
-                                target="_blank">
-                                    ${localArray[STATE.REP].phone}
-                            </a>`);
-            } else {
-                $('#phone').text('Phone: unknown');
-            };
-            break;
-    }
-}
+    let currentArray = getLevelArray();
+
+    setRepCardTitle(currentArray);
+    setRepCardName(currentArray);
+    setRepCardParty(currentArray);
+    setRepCardImage(currentArray);
+    setRepCardFacebook(currentArray);
+    setRepCardPhone(currentArray);
+};
 
 // Handle rep pick
 function onRepPick(){
