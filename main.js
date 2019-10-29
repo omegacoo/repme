@@ -180,6 +180,7 @@ function handleJson(json){
     let divisions = json.divisions;
     let offices = json.offices;
     let officials = json.officials;
+    
     let fedOffices = divisions['ocd-division/country:us'].officeIndices;
     let state = json.normalizedInput.state.toLowerCase();
     let stateOffices = divisions[`ocd-division/country:us/state:${state}`].officeIndices;
@@ -188,6 +189,7 @@ function handleJson(json){
     let stateIndices = [];
     let localIndices = [];
 
+    // Populate the above arrays
     for(let i = 0; i < fedOffices.length; i++){
         fedIndices.push(fedOffices[i]);
     };
@@ -195,7 +197,7 @@ function handleJson(json){
         stateIndices.push(stateOffices[i]);
     };
 
-    // Put all indices not in either fedIndices or stateIndices into localIndices
+        // Put all indices not in either fedIndices or stateIndices into localIndices
     for(let i = 0; i < offices.length; i++){
         let foundFed = fedIndices.indexOf(i);
         let foundState = stateIndices.indexOf(i);
@@ -205,105 +207,57 @@ function handleJson(json){
         };
     };
 
-    for(let i = 0; i < fedIndices.length; i++){
-        for(let j = 0; j < offices[fedIndices[i]].officialIndices.length; j++){
+    let total = fedIndices.length + stateIndices.length + localIndices.length;
+
+    for(let i = 0; i < total; i++){
+        let currentIndices;
+        let currentArray;
+        let currentIndex;
+
+        if(i < fedIndices.length){
+            currentIndices = fedIndices;
+            currentArray = fedArray;
+            currentIndex = i;
+        } else if(i < fedIndices.length + stateIndices.length){
+            currentIndices = stateIndices;
+            currentArray = stateArray;
+            currentIndex = i - fedIndices.length;
+        } else {
+            currentIndices = localIndices;
+            currentArray = localArray;
+            currentIndex = i - (fedIndices.length + stateIndices.length);
+        };
+
+        for(let j = 0; j < offices[currentIndices[currentIndex]].officialIndices.length; j++){
             let picture;
             let facebook;
             let phones;
-            if(officials[offices[fedIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[fedIndices[i]].officialIndices[j]].photoUrl;
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl){
+                picture = officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
-            if(officials[offices[fedIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[fedIndices[i]].officialIndices[j]].channels[0].id;
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].channels){
+                facebook = officials[offices[currentIndices[currentIndex]].officialIndices[j]].channels[0].id;
             } else {
                 facebook = 'unknown';
             }
-            if(officials[offices[fedIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[fedIndices[i]].officialIndices[j]].phones[0];
+            if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].phones){
+                phones = officials[offices[currentIndices[currentIndex]].officialIndices[j]].phones[0];
             } else {
                 phones = 'unknown';
-            }
+            };
 
-            fedArray.push({
-                title: offices[fedIndices[i]].name,
-                name: officials[offices[fedIndices[i]].officialIndices[j]].name,
-                party: officials[offices[fedIndices[i]].officialIndices[j]].party,
+            currentArray.push({
+                title: offices[currentIndices[currentIndex]].name,
+                name: officials[offices[currentIndices[currentIndex]].officialIndices[j]].name,
+                party: officials[offices[currentIndices[currentIndex]].officialIndices[j]].party,
                 image: picture,
                 phone: phones,
                 social_media: {
                     facebook: facebook
                 }
             })
-        };
-    };
-
-    for(let i = 0; i < stateIndices.length; i++){
-        for(let j = 0; j < offices[stateIndices[i]].officialIndices.length; j++){
-            let picture;
-            let facebook;
-            let phone;
-            if(officials[offices[stateIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[stateIndices[i]].officialIndices[j]].photoUrl;
-            } else {
-                picture = flagImage;
-            };
-            if(officials[offices[stateIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[stateIndices[i]].officialIndices[j]].channels[0].id;
-            } else {
-                facebook = 'unknown';
-            }
-            if(officials[offices[stateIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[stateIndices[i]].officialIndices[j]].phones[0];
-            } else {
-                phones = 'unknown';
-            }
-
-            stateArray.push({
-                title: offices[stateIndices[i]].name,
-                name: officials[offices[stateIndices[i]].officialIndices[j]].name,
-                party: officials[offices[stateIndices[i]].officialIndices[j]].party,
-                image: picture,
-                phone: phones,
-                social_media: {
-                    facebook: facebook
-                }
-            });
-        };
-    };
-
-    for(let i = 0; i < localIndices.length; i++){
-        for(let j = 0; j < offices[localIndices[i]].officialIndices.length; j++){
-            let picture;
-            let facebook;
-            let phones;
-            if(officials[offices[localIndices[i]].officialIndices[j]].photoUrl){
-                picture = officials[offices[localIndices[i]].officialIndices[j]].photoUrl;
-            } else {
-                picture = flagImage;
-            };
-            if(officials[offices[localIndices[i]].officialIndices[j]].channels){
-                facebook = officials[offices[localIndices[i]].officialIndices[j]].channels[0].id;
-            } else {
-                facebook = 'unknown';
-            }
-            if(officials[offices[localIndices[i]].officialIndices[j]].phones){
-                phones = officials[offices[localIndices[i]].officialIndices[j]].phones[0];
-            } else {
-                phones = 'unknown';
-            }
-
-            localArray.push({
-                title: offices[localIndices[i]].name,
-                name: officials[offices[localIndices[i]].officialIndices[j]].name,
-                party: officials[offices[localIndices[i]].officialIndices[j]].party,
-                image: picture,
-                phone: phones,
-                social_media: {
-                    facebook: facebook
-                }
-            });
         };
     };
 };
@@ -338,7 +292,7 @@ function getResults(query){
             handleJson(responseJson);
         })
         .catch(err => {
-            alert(err);
+            console.log(err);
             STATE.SCREEN = screens.LANDING;
             updateScreen();
         });
