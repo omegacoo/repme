@@ -21,7 +21,6 @@ const STATE = {
     REP: 0
 };
 
-// Temporary arrays just to test getReps
 let fedArray = [];
 
 let stateArray = [];
