@@ -176,6 +176,32 @@ function onBackClick(){
     });
 };
 
+// Parse API data
+function getIndices(offices){
+    let indices = [];
+
+    for(let i = 0; i < offices.length; i++){
+        indices.push(offices[i]);
+    };
+
+    return indices;
+};
+
+function getRemainingIndices(offices, firstIndices, secondIndices){
+    let indices = [];
+
+    for(let i = 0; i < offices.length; i++){
+        let foundFed = firstIndices.indexOf(i);
+        let foundState = secondIndices.indexOf(i);
+
+        if(foundFed === -1 && foundState === -1){
+            indices.push(i)
+        };
+    };
+
+    return indices;
+}
+
 function handleJson(json){
     let divisions = json.divisions;
     let offices = json.offices;
@@ -185,27 +211,9 @@ function handleJson(json){
     let state = json.normalizedInput.state.toLowerCase();
     let stateOffices = divisions[`ocd-division/country:us/state:${state}`].officeIndices;
     
-    let fedIndices = [];
-    let stateIndices = [];
-    let localIndices = [];
-
-    // Populate the above arrays
-    for(let i = 0; i < fedOffices.length; i++){
-        fedIndices.push(fedOffices[i]);
-    };
-    for(let i = 0; i < stateOffices.length; i++){
-        stateIndices.push(stateOffices[i]);
-    };
-
-        // Put all indices not in either fedIndices or stateIndices into localIndices
-    for(let i = 0; i < offices.length; i++){
-        let foundFed = fedIndices.indexOf(i);
-        let foundState = stateIndices.indexOf(i);
-
-        if(foundFed === -1 && foundState === -1){
-            localIndices.push(i)
-        };
-    };
+    let fedIndices = getIndices(fedOffices);
+    let stateIndices = getIndices(stateOffices);
+    let localIndices = getRemainingIndices(offices, fedIndices, stateIndices);
 
     let total = fedIndices.length + stateIndices.length + localIndices.length;
 
@@ -257,7 +265,7 @@ function handleJson(json){
                 social_media: {
                     facebook: facebook
                 }
-            })
+            });
         };
     };
 };
