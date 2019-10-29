@@ -28,46 +28,43 @@ let stateArray = [];
 let localArray = [];
 
 // Handle card swap
-function onCardSwap(){
-    let repArr;
+function getLevelArray(){
+    switch(STATE.LEVEL){
+        case 'federal':
+            return fedArray;
+        case 'state':
+            return stateArray;
+        case 'local':
+            return localArray;
+    };
+};
 
-    $('#js-right').on('click', function(){
-        switch(STATE.LEVEL){
-            case 'federal':
-                repArr = fedArray;
-                break;
-            case 'state':
-                repArr = stateArray;
-                break;
-            case 'local':
-                repArr = localArray;
-                break;
-        };
-        if(STATE.REP < repArr.length - 1){
-            STATE.REP += 1
-            fillRepCard();
-            updateScreen();
-        }
-    })
+function leftArrow(){
     $('#js-left').on('click', function(){
-        switch(STATE.LEVEL){
-            case 'federal':
-                repArr = fedArray;
-                break;
-            case 'state':
-                repArr = stateArray;
-                break;
-            case 'local':
-                repArr = localArray;
-                break;
-        };
         if(STATE.REP > 0){
             STATE.REP -= 1
             fillRepCard();
             updateScreen();
-        }
-    })
-}
+        };
+    });
+};
+
+function rightArrow(){
+    $('#js-right').on('click', function(){
+        let repArr = getLevelArray();
+
+        if(STATE.REP < repArr.length - 1){
+            STATE.REP += 1
+            fillRepCard();
+            updateScreen();
+        };
+    });
+};
+
+function onCardSwap(){
+    rightArrow();
+    leftArrow();
+};
 
 // Populate Rep Card
 function fillRepCard(){
