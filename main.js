@@ -1,6 +1,7 @@
 const BASE_URL = 'https://www.googleapis.com/civicinfo/v2/representatives';
 const apiKey = 'AIzaSyBpylwFzws1j6fnwaEkhdvi3o6Z4uXJWwg';
-const flagImage = 'https://www.pixelstalk.net/wp-content/uploads/images1/Download-American-Flag-Pictures.jpg';
+const flagImage = new Image();
+flagImage.src = 'https://www.pixelstalk.net/wp-content/uploads/images1/Download-American-Flag-Pictures.jpg';
 
 const screens = Object.freeze({
     LANDING: 'landing',
@@ -29,6 +30,7 @@ function resetArrays(){
     fedArray = [];
     stateArray = [];
     localArray = [];
+    imageArray = [];
 };
 
 function getLevelArray(){
@@ -84,7 +86,7 @@ function setRepCardParty(currentArray){
 };
 
 function setRepCardImage(currentArray){
-    $('#js-image').html(`<img class="js-rep-image" src="${currentArray[STATE.REP].image}" alt="${currentArray[STATE.REP].name}">`);
+    $('#js-image').html(currentArray[STATE.REP].image);
 };
 
 function setRepCardFacebook(currentArray){
@@ -207,7 +209,7 @@ function getRemainingIndices(offices, firstIndices, secondIndices){
     return indices;
 };
 
-function handleJson(json){
+function parseJson(json){
     let divisions = json.divisions;
     let offices = json.offices;
     let officials = json.officials;
@@ -246,7 +248,8 @@ function handleJson(json){
             let facebook;
             let phones;
             if(officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl){
-                picture = officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl;
+                picture = new Image();
+                picture.src = officials[offices[currentIndices[currentIndex]].officialIndices[j]].photoUrl;
             } else {
                 picture = flagImage;
             };
@@ -302,7 +305,7 @@ function getResults(query){
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            handleJson(responseJson);
+            parseJson(responseJson);
         })
         .catch(err => {
             errorHandle(err);

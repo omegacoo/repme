@@ -175,7 +175,7 @@ header {
     overflow: hidden;
 }
 
-.js-rep-image {
+#js-image img {
     position: relative;
 
     width: 131px;
@@ -309,7 +309,7 @@ button:hover {
         height: 200px;
     }
 
-    .js-rep-image {
+    #js-image img {
         width: 201px;
         height: 205px;
     }
@@ -424,7 +424,7 @@ button:hover {
         height: 200px;
     }
 
-    .js-rep-image {
+    #js-image img {
         width: 201px;
         height: 205px;
     }
@@ -498,7 +498,7 @@ button:hover {
         height: 250px;
     }
 
-    .js-rep-image {
+    #js-image img {
         width: 251px;
         height: 255px;
     }
