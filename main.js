@@ -30,7 +30,6 @@ function resetArrays(){
     fedArray = [];
     stateArray = [];
     localArray = [];
-    imageArray = [];
 };
 
 function getLevelArray(){
