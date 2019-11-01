@@ -45,7 +45,7 @@ h1 {
 .js-splash h1, .js-splash p {
     height: 33vh;
 
-    padding-top: 16vh;
+    padding-top: 14vh;
 }
 
 .js-splash h1 {
@@ -75,34 +75,56 @@ h1 {
 .js-landing {
     display: flex;
     flex-direction: column;
+
+    text-align: center;
+}
+
+.js-landing h1 {
+    height: 33vh;
+
+    padding-top: 14vh;
+
+    background-color: red;
+}
+
+#js-form {
+    height: 33vh;
+
+    padding-top: 8vh;
+
+    background-color: white;
+
+    text-align: center;
 }
 
 #tip {
-    margin-top: 15vh;
     font-size: 2.5vh;
+    
+    padding: 2vh;
 }
 
 #js-address {
     border-radius: 15px;
-    width: 40vw;
+    width: 75vw;
 
     padding: 1vw;
+
+    text-align: center;
 }
 
 #js-form button {
-    display: block;
-
-    margin-top: 20px;
+    margin-top: 24vh;
     margin-left: auto;
     margin-right: auto;
-    
-    width: 20vw;
-    height: 5vh;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    width: 50vw;
+    height: 10vh;
 
-    border-radius: 15px;
+    border: 1px solid black;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    background-color: white;
 }
 
 #error {
@@ -249,22 +271,19 @@ h1 {
 }
 
 /* etc. */
-.js-back-container {
-    bottom: 20px;
-
-    width: 100vw;
-
-    text-align: center;
-}
-
 .back {
-    width: 100px;
-    height: 30px;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    width: 50vw;
+    height: 10vh;
 
-    border-radius: 15px;
+    border: 1px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+
+    background-color: white;
 }
 
 .hidden {

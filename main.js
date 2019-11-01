@@ -375,7 +375,7 @@ function updateScreen(){
         };
     };
 
-    if(STATE.SCREEN === 'splash'){
+    if(STATE.SCREEN === 'splash' || STATE.SCREEN === 'landing'){
         $('.back').addClass('hidden');
     } else {
         $('.back').removeClass('hidden');
