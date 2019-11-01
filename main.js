@@ -109,6 +109,22 @@ function setRepCardPhone(currentArray){
     };
 };
 
+function setRepCardArrows(currentArray){
+    if(STATE.REP === 0 && STATE.REP === currentArray.length - 1){
+        $('#js-left').addClass('hidden');
+        $('#js-right').addClass('hidden');
+    } else if(STATE.REP === 0){
+        $('#js-left').addClass('hidden');
+        $('#js-right').removeClass('hidden');
+    } else if(STATE.REP === currentArray.length - 1){
+        $('#js-right').addClass('hidden');
+        $('#js-left').removeClass('hidden');
+    } else {
+        $('#js-left').removeClass('hidden');
+        $('#js-right').removeClass('hidden');
+    };
+};
+
 function fillRepCard(){
     let currentArray = getLevelArray();
 
@@ -118,6 +134,7 @@ function fillRepCard(){
     setRepCardImage(currentArray);
     setRepCardFacebook(currentArray);
     setRepCardPhone(currentArray);
+    setRepCardArrows(currentArray);
 };
 
 // Handle rep pick
