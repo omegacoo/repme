@@ -13,9 +13,11 @@
     font-family: 'Cinzel';
 }
 
-body {
+main {
     display: flex;
     flex-direction: column;
+
+    height: 100vh;
 
     background-color: var(--main-bg-color);
 }
@@ -27,12 +29,9 @@ h1 {
     color: var(--main-txt-color);
 }
 
-header {
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    text-align: center;
+/* Splash */
+.js-splash {
+    
 }
 
 /* Landing */
@@ -44,10 +43,12 @@ header {
     background-color: var(--main-bg-color);
     color: var(--main-txt-color);
 
+    display: inline-block;
+
     text-align: center;
 
-    width: 300px;
-    height: 300px;
+    width: 60vw;
+    height: 50vh;
 
     border: 2px solid black;
     border-radius: 30px;
@@ -55,23 +56,16 @@ header {
     box-shadow: 3px 3px black;
 }
 
-#error {
-    margin-top: 15px;
-    color: red;
-    font-weight: bolder;
-}
-
 #tip {
-    margin-top: 20%;
-    font-size: 10px;
-}
-
-#js-form {
-    display: block;
+    margin-top: 15vh;
+    font-size: 2.5vh;
 }
 
 #js-address {
     border-radius: 15px;
+    width: 40vw;
+
+    padding: 1vw;
 }
 
 #js-form button {
@@ -81,13 +75,19 @@ header {
     margin-left: auto;
     margin-right: auto;
     
-    width: 100px;
-    height: 50px;
+    width: 20vw;
+    height: 5vh;
 
     background-color: var(--main-bg-color);
     color: var(--main-txt-color);
 
     border-radius: 15px;
+}
+
+#error {
+    margin-top: 2vh;
+    color: red;
+    font-weight: bolder;
 }
 
 /* Level Select */
@@ -229,8 +229,6 @@ header {
 
 /* etc. */
 .js-back-container {
-    position: fixed;
-
     bottom: 20px;
 
     width: 100vw;
@@ -262,263 +260,20 @@ button:hover {
 
 /* Galaxy S9 Landscape */
 @media only screen and (min-width: 700px) {
-    header {
-        margin-top: 5px;
-    }
-
-    .js-back-container {
-        bottom: 10px;
-    }
-
-    .js-landing {
-        margin-top: 5vh;
-
-        height: 250px;
-    }
-
-    .js-level-select {
-        flex-direction: row;
-
-        margin-top: 25px;
-    }
-
-    .js-rep-pick {
-        margin-top: 10px;
-
-        height: 220px;
-    }
-
-    .js-rep-card {
-        margin-top: 5px;
-
-        height: 60vh;
-    }
-
-    #js-center {
-        display: block;
-
-        width: 100%;
-    }
-
-    #js-image {
-        float: left;
-        margin-left: 5px;
-        margin-top: 5px;
-
-        width: 200px;
-        height: 200px;
-    }
-
-    #js-image img {
-        width: 201px;
-        height: 205px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-    }
+    
 }
 
 /* iPad Portrait */
 @media only screen and (min-width: 700px) and (min-height: 1000px) {
-    header {
-        margin-top: 20vh;
-    }
-
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        flex-direction: column;
-
-        margin-top: 50px;
-    }
-
-    .js-rep-pick {
-        margin-top: 20px;
-
-        height: 700px;
-    }
-
-    .js-rep-card {
-        height: auto;
-    }
-
-    #js-image {
-        float: none;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 40px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 30px;
-        font-size: 50px;
-    }
-
-    .js-rep-card h3 {
-        font-size: 35px;
-    }
-
-    .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
+    
 }
 
 /* iPad Landscape */
 @media only screen and (min-width: 1000px) and (min-height: 700px) {
-    header {
-        margin-top: 10vh;
-    }
-
-    .js-back-container {
-        bottom: 30px;
-    }
-
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        margin-top: 170px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 50vw;
-    }
-
-    .js-rep-pick {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        padding: 0;
-
-        width: 50vw;
-
-        height: 500px;
-    }
-
-    .js-rep-card {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 80vw;
-        height: auto;
-    }
-
-    #js-image {
-        float: none;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-
-        width: 200px;
-        height: 200px;
-    }
-
-    #js-image img {
-        width: 201px;
-        height: 205px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-        font-size: 50px;
-    }
-
-    .js-rep-card h3 {
-        font-size: 35px;
-    }
-
-    .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-    }
+    
 }
 
 /* Desktop */
 @media only screen and (min-width: 1100px) and (min-height: 800px) {
-    header {
-        margin-top: 10vh;
-    }
-
-    .js-back-container {
-        bottom: 30px;
-    }
-
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        margin-top: 170px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 50vw;
-    }
-
-    .js-rep-pick {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        padding: 0;
-
-        width: 50vw;
-
-        height: 600px;
-    }
-
-    .js-rep-card {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 50vw;
-    }
-
-    #js-image {
-        float: none;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-
-        width: 250px;
-        height: 250px;
-    }
-
-    #js-image img {
-        width: 251px;
-        height: 255px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-        font-size: 50px;
-    }
-
-    .js-rep-card h3 {
-        font-size: 35px;
-    }
-
-    .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-    }
-
-    button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
-        background-color: var(--hover-button-color);
-    }
+    
 }
