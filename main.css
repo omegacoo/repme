@@ -1,6 +1,6 @@
 :root {
     --main-bg-color: #9ed0e6;
-    --main-txt-color: #1A4F65;
+    --main-txt-color: #black;
     --hover-button-color: #349ECB;
 }
 
@@ -19,7 +19,7 @@ main {
 
     height: 100vh;
 
-    background-color: var(--main-bg-color);
+    background-color: blue;
 }
 
 h1 {
@@ -31,29 +31,50 @@ h1 {
 
 /* Splash */
 .js-splash {
-    
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+.js-splash h1, .js-splash p {
+    height: 33vh;
+
+    padding-top: 16vh;
+}
+
+.js-splash h1 {
+    background-color: red;
+}
+
+.js-splash p {
+    background-color: white;
+}
+
+.js-splash button {
+    margin-top: 12vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 50vw;
+    height: 10vh;
+
+    border: 1px solid black;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    background-color: white;
 }
 
 /* Landing */
 .js-landing {
-    margin-top: 20vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
-
-    display: inline-block;
-
-    text-align: center;
-
-    width: 60vw;
-    height: 50vh;
-
-    border: 2px solid black;
-    border-radius: 30px;
-
-    box-shadow: 3px 3px black;
+    display: flex;
+    flex-direction: column;
 }
 
 #tip {
