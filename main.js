@@ -185,6 +185,9 @@ function onLevelSelect(){
 function onBackClick(){
     $('.back').on('click', function(e){
         switch(STATE.SCREEN){
+            case 'landing':
+                STATE.SCREEN = screens.SPLASH;
+                break;
             case 'level-select':
                 STATE.SCREEN = screens.LANDING;
                 break;
@@ -372,7 +375,7 @@ function updateScreen(){
         };
     };
 
-    if(STATE.SCREEN === 'landing'){
+    if(STATE.SCREEN === 'splash'){
         $('.back').addClass('hidden');
     } else {
         $('.back').removeClass('hidden');
