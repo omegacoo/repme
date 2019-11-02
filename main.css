@@ -113,7 +113,7 @@ h1 {
 }
 
 #js-form button {
-    margin-top: 24vh;
+    margin-top: 22vh;
     margin-left: auto;
     margin-right: auto;
 
@@ -140,20 +140,35 @@ h1 {
 }
 
 .js-level-button {
-    width: 130px;
-    height: 130px;
+    height: 33.333vh;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    border: none;
 
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 5vh;
+    font-weight: bolder;
 
-    border-radius: 15px;
+    color: black;
 }
 
+.js-level-button:hover {
+    border: 2px solid white;
+}
+
+#federal {
+    background-color: red;
+}
+
+#state {
+    background-color: white;
+}
+
+#state:hover {
+    border: 2px solid black;
+}
+
+#local {
+    background-color: blue;
+}
 
 /* Representative Select */
 .js-rep-pick {
@@ -272,18 +287,25 @@ h1 {
 
 /* etc. */
 .back {
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
 
-    width: 50vw;
-    height: 10vh;
+    bottom: 4vh;
+    left: 4vh;
 
-    border: 1px solid black;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 3px;
 
-    background-color: white;
+    width: 4vh;
+    height: 4vh;
+
+    transform: rotate(135deg);
+}
+
+.back:hover {
+    border-color: white;
+    cursor: pointer;
 }
 
 .hidden {
