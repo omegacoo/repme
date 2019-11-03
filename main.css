@@ -18,15 +18,14 @@ main {
     flex-direction: column;
 
     height: 100vh;
+    width: 100vw;
 
     background-color: blue;
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 5vh;
     font-weight: bolder;
-
-    color: var(--main-txt-color);
 }
 
 /* Splash */
@@ -172,44 +171,44 @@ h1 {
 
 /* Representative Select */
 .js-rep-pick {
-    margin-top: 30px;
-    padding: 2vw;
-    padding-top: 0;
+    align-self: center;
 
-    height: 500px;
-    width: 100vw;
+    margin-top: 3vh;
+
+    height: 85vh;
+    width: 95vw;
 
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-auto-rows: 110px;
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 20vh;
+    column-gap: 2vw;
+    row-gap: 2vh;
 
     overflow: auto;
+
+    text-align: center;
 }
 
 .js-rep-button {
-    overflow: hidden;
+    height: auto;
+    width: auto;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
-
-    border-radius: 15px;
+    font-size: 2vh;
 }
 
 /* Representative Card */
 .js-rep-card {
-    margin-top: 60px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 15vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
 
     border: 2px solid black;
     border-radius: 30px;
     
     box-shadow: 3px 3px black;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    background-color: white;
+    color: black;
 
     text-align: center;
 
@@ -219,12 +218,16 @@ h1 {
     justify-content: space-between;
 }
 
+#js-center {
+    width: 96vw;
+}
+
 #js-image {
     border: 2px solid black;
     border-radius: 50%;
     
-    width: 130px;
-    height: 130px;
+    width: 30vh;
+    height: 30vh;
 
     margin-left: auto;
     margin-right: auto;
@@ -236,8 +239,8 @@ h1 {
 #js-image img {
     position: relative;
 
-    width: 131px;
-    height: 135px;
+    width: 30vh;
+    height: 30vh;
 
     border-radius: 50%;
 
@@ -252,27 +255,33 @@ h1 {
     flex-shrink: 0;
     flex-basis: 25px;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    background-color: red;
+    color: black;
 
     font-size: 20px;
 
     border: none;
 }
 
-#js-left {
-    border-right: 2px dashed var(--main-txt-color);
+#title {
+    font-size: 3vh;
 }
 
-#js-right {
-    border-left: 2px dashed var(--main-txt-color);
+#name {
+    font-size: 2vh;
+}
+
+#party {
+    font-size: 2vh;
 }
 
 .js-rep-contact {
     display: inline-block;
 
     background-color: white;
-    color: var(--main-txt-color);
+    color: black;
+
+    border: 2px solid black;
 
     margin-left: auto;
     margin-right: auto;
@@ -282,7 +291,9 @@ h1 {
     border-radius: 15px;
 
     text-align: left;
-    padding: 5px;
+    padding: 1vw;
+
+    width: 75vw;
 }
 
 /* etc. */
