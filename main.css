@@ -179,7 +179,7 @@ h1 {
     width: 95vw;
 
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 46.5vw 46.5vw;
     grid-auto-rows: 20vh;
     column-gap: 2vw;
     row-gap: 2vh;
@@ -267,11 +267,7 @@ h1 {
     font-size: 3vh;
 }
 
-#name {
-    font-size: 2vh;
-}
-
-#party {
+#name, #party {
     font-size: 2vh;
 }
 
@@ -290,10 +286,8 @@ h1 {
 
     border-radius: 15px;
 
-    text-align: left;
+    text-align: center;
     padding: 1vw;
-
-    width: 75vw;
 }
 
 /* etc. */
@@ -331,22 +325,83 @@ button:hover {
     cursor: pointer;
 }
 
-/* Galaxy S9 Landscape */
-@media only screen and (min-width: 700px) {
-    
-}
+/* landscape */
+@media only screen and (min-width: 700px) and (max-height: 400px) {
+    .js-splash button {
+        margin-top: 6.5vh;
 
-/* iPad Portrait */
-@media only screen and (min-width: 700px) and (min-height: 1000px) {
+        height: 10vw;
+    }
     
-}
+    #tip {
+        font-size: 2.5vw;
+        padding-top: 0;
+    }
 
-/* iPad Landscape */
-@media only screen and (min-width: 1000px) and (min-height: 700px) {
-    
+    #js-address {
+        padding: 0;
+    }
+
+    #js-form button {
+        margin-top: 16vh;
+
+        height: 10vw;
+    }
+
+    .back {
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .js-level-button {
+        font-size: 5vw;
+    }
+
+    .js-rep-button {
+        font-size: 2vw;
+    }
+
+    .js-rep-card {
+        margin-top: 2vh;
+
+        margin-left: 20vw;
+        margin-right: 20vw;
+    }
+
+    #js-center {
+        width: 40vw;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        display: inline-block;
+    }
+
+    #js-image {
+        margin-top: 1vh;
+    }
+
+    #js-image, #js-image img {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    #title {
+        font-size: 3vw;
+    }
+
+    #name, #party {
+        font-size: 2vw;
+    }
+
+    .js-rep-contact {
+        width: 40vw;
+
+        margin-top: 0;
+    }
 }
 
 /* Desktop */
 @media only screen and (min-width: 1100px) and (min-height: 800px) {
-    
+
 }
