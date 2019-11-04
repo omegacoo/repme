@@ -216,6 +216,8 @@ h1 {
 
     display: flex;
     justify-content: space-between;
+
+    max-height: 96vh;
 }
 
 #js-center {
@@ -267,7 +269,11 @@ h1 {
     font-size: 3vh;
 }
 
-#name, #party {
+#name {
+    font-size: 2.5vh;
+}
+
+#party {
     font-size: 2vh;
 }
 
@@ -364,12 +370,12 @@ button:hover {
     .js-rep-card {
         margin-top: 2vh;
 
-        margin-left: 20vw;
-        margin-right: 20vw;
+        margin-left: 15vw;
+        margin-right: 15vw;
     }
 
     #js-center {
-        width: 40vw;
+        width: 70vw;
 
         margin-left: auto;
         margin-right: auto;
@@ -395,9 +401,9 @@ button:hover {
     }
 
     .js-rep-contact {
-        width: 40vw;
-
         margin-top: 0;
+        margin-left: 1vw;
+        margin-right: 2vw;
     }
 }
 
