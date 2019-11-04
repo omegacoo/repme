@@ -16,30 +16,30 @@
 </head>
 <body>
     <main>
-        <section class="js-splash">
+        <section class="js-splash" role="introduce the app">
             <h1>RepMe!</h1>
             <p>Let's find your representitives!</p>
             <button id="js-begin">Begin!</button>
         </section>
-        <section class="js-landing">
+        <section class="js-landing" role="Enter your address">
             <h1>RepMe!</h1>
             <form id="js-form" action="#">
-                <p id="tip">Please enter your zip code at a minimum</p>
+                <p id="tip" role="basic requirment">Please enter your zip code at a minimum</p>
                 <input id="js-address" type="text" value="enter your address...">
                 <button>submit</button>
             </form>
             <p id="error"></p>
         </section>
-        <section class="js-level-select">
+        <section class="js-level-select" role="select government echelon">
             <button id="federal" class="js-level-button">Federal</button>
             <button id="state" class="js-level-button">State</button>
             <button id="local" class="js-level-button">Local</button>
         </section>
-        <section class="js-rep-pick">
+        <section class="js-rep-pick" role="select government position">
             <!-- fill dynamically -->
         </section>
-        <section class="js-rep-card">
-            <button id="js-left"><</button>
+        <section class="js-rep-card" role="view representitive data">
+            <button id="js-left" role="iterate left"><</button> <!-- This is NOT a typo -->
             <section id="js-center">
                 <div id="js-image"></div>
                 <h2 id="title">Title</h1>
@@ -50,9 +50,9 @@
                     <p id="facebook"></p>
                 </section>
             </section>
-            <button id="js-right">></button>
+            <button id="js-right" role="iterate right">></button> <!-- This is NOT a typo -->
         </section>
-        <i class="back hidden"></i>
+        <i class="back hidden" role="go to the previous screen"></i>
     </main>
 </body>
 </html>

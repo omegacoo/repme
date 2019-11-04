@@ -326,7 +326,7 @@ button:hover {
 }
 
 /* landscape */
-@media only screen and (min-width: 700px) and (max-height: 400px) {
+@media only screen and (min-width: 660px) and (max-height: 420px) {
     .js-splash button {
         margin-top: 6.5vh;
 
