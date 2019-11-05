@@ -12,16 +12,19 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet"> 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Who Represents Me?</h1>
-    </header>
     <main>
+        <section class="js-splash">
+            <h1>RepMe!</h1>
+            <p>Let's find your representitives!</p>
+            <button id="js-begin">Begin!</button>
+        </section>
         <section class="js-landing">
-            <p id="tip">Please enter your zip code at a minimum</p>
+            <h1>RepMe!</h1>
             <form id="js-form" action="#">
+                <p id="tip">Please enter your zip code at a minimum</p>
                 <input id="js-address" type="text" value="enter your address...">
                 <button>submit</button>
             </form>
@@ -36,22 +39,21 @@
             <!-- fill dynamically -->
         </section>
         <section class="js-rep-card">
-            <button id="js-left"><</button>
+            <button id="js-left">&lt;</button>
             <section id="js-center">
                 <div id="js-image"></div>
-                <h2 id="title">Title</h1>
-                <h3 id="name">Name</h2>
-                <h4 id="party">Party</h3>
+                <h2 id="title">Title</h2>
+                <div>-</div>
+                <h3 id="name">Name</h3>
+                <h4 id="party">Party</h4>
                 <section class="js-rep-contact">
                     <p id="phone">Phone: </p>
                     <p id="facebook"></p>
                 </section>
             </section>
-            <button id="js-right">></button>
+            <button id="js-right">&gt;</button>
         </section>
-        <div class="js-back-container">
-            <button class="back hidden">back</button>
-        </div>
+        <i class="back hidden"></i>
     </main>
 </body>
 </html>

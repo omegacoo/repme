@@ -1,6 +1,6 @@
 :root {
     --main-bg-color: #9ed0e6;
-    --main-txt-color: #1A4F65;
+    --main-txt-color: #black;
     --hover-button-color: #349ECB;
 }
 
@@ -13,81 +13,123 @@
     font-family: 'Cinzel';
 }
 
-body {
+main {
     display: flex;
     flex-direction: column;
 
-    background-color: var(--main-bg-color);
+    height: 100vh;
+    width: 100vw;
+
+    background-color: blue;
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 5vh;
     font-weight: bolder;
-
-    color: var(--main-txt-color);
 }
 
-header {
-    margin-top: 10vh;
+/* Splash */
+.js-splash {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+
     margin-left: auto;
     margin-right: auto;
 
     text-align: center;
+}
+
+.js-splash h1, .js-splash p {
+    height: 33vh;
+
+    padding-top: 14vh;
+}
+
+.js-splash h1 {
+    background-color: red;
+}
+
+.js-splash p {
+    background-color: white;
+}
+
+.js-splash button {
+    margin-top: 12vh;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 50vw;
+    height: 10vh;
+
+    border: 1px solid black;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    background-color: white;
 }
 
 /* Landing */
 .js-landing {
-    margin-top: 20vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    display: flex;
+    flex-direction: column;
 
     text-align: center;
-
-    width: 300px;
-    height: 300px;
-
-    border: 2px solid black;
-    border-radius: 30px;
-
-    box-shadow: 3px 3px black;
 }
 
-#error {
-    margin-top: 15px;
-    color: red;
-    font-weight: bolder;
-}
+.js-landing h1 {
+    height: 33vh;
 
-#tip {
-    margin-top: 20%;
-    font-size: 10px;
+    padding-top: 14vh;
+
+    background-color: red;
 }
 
 #js-form {
-    display: block;
+    height: 33vh;
+
+    padding-top: 8vh;
+
+    background-color: white;
+
+    text-align: center;
+}
+
+#tip {
+    font-size: 2.5vh;
+    
+    padding: 2vh;
 }
 
 #js-address {
     border-radius: 15px;
+    width: 75vw;
+
+    padding: 1vw;
+
+    text-align: center;
 }
 
 #js-form button {
-    display: block;
-
-    margin-top: 20px;
+    margin-top: 22vh;
     margin-left: auto;
     margin-right: auto;
-    
-    width: 100px;
-    height: 50px;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    width: 50vw;
+    height: 10vh;
 
-    border-radius: 15px;
+    border: 1px solid black;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    background-color: white;
+}
+
+#error {
+    margin-top: 2vh;
+    color: red;
+    font-weight: bolder;
 }
 
 /* Level Select */
@@ -97,61 +139,78 @@ header {
 }
 
 .js-level-button {
-    width: 130px;
-    height: 130px;
+    height: 33.333vh;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    border: none;
 
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 5vh;
+    font-weight: bolder;
 
-    border-radius: 15px;
+    color: black;
 }
 
+.js-level-button:hover {
+    border: 2px solid black;
+}
+
+#federal {
+    background-color: red;
+    color: white;
+}
+
+#state {
+    background-color: white;
+}
+
+#state:hover {
+    border: 2px solid black;
+}
+
+#local {
+    background-color: blue;
+    color: white;
+}
 
 /* Representative Select */
 .js-rep-pick {
-    margin-top: 30px;
-    padding: 2vw;
-    padding-top: 0;
+    align-self: center;
 
-    height: 500px;
-    width: 100vw;
+    margin-top: 3vh;
+
+    height: 85vh;
+    width: 95vw;
 
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-auto-rows: 110px;
-    column-gap: 10px;
-    row-gap: 10px;
+    grid-template-columns: 46.5vw 46.5vw;
+    grid-auto-rows: 20vh;
+    column-gap: 2vw;
+    row-gap: 2vh;
 
     overflow: auto;
+
+    text-align: center;
 }
 
 .js-rep-button {
-    overflow: hidden;
+    height: auto;
+    width: auto;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    font-size: 2vh;
 
     border-radius: 15px;
 }
 
 /* Representative Card */
 .js-rep-card {
-    margin-top: 60px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-top: 15vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
 
     border: 2px solid black;
     border-radius: 30px;
-    
-    box-shadow: 3px 3px black;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    background-color: white;
+    color: black;
 
     text-align: center;
 
@@ -159,14 +218,20 @@ header {
 
     display: flex;
     justify-content: space-between;
+
+    max-height: 96vh;
+}
+
+#js-center {
+    width: 96vw;
 }
 
 #js-image {
     border: 2px solid black;
     border-radius: 50%;
     
-    width: 130px;
-    height: 130px;
+    width: 30vh;
+    height: 30vh;
 
     margin-left: auto;
     margin-right: auto;
@@ -178,8 +243,8 @@ header {
 #js-image img {
     position: relative;
 
-    width: 131px;
-    height: 135px;
+    width: 30vh;
+    height: 30vh;
 
     border-radius: 50%;
 
@@ -194,27 +259,33 @@ header {
     flex-shrink: 0;
     flex-basis: 25px;
 
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
+    background-color: red;
+    color: black;
 
     font-size: 20px;
 
     border: none;
 }
 
-#js-left {
-    border-right: 2px dashed var(--main-txt-color);
+#title {
+    font-size: 3vh;
 }
 
-#js-right {
-    border-left: 2px dashed var(--main-txt-color);
+#name {
+    font-size: 2.5vh;
+}
+
+#party {
+    font-size: 2vh;
 }
 
 .js-rep-contact {
     display: inline-block;
 
     background-color: white;
-    color: var(--main-txt-color);
+    color: black;
+
+    border: 2px solid black;
 
     margin-left: auto;
     margin-right: auto;
@@ -223,29 +294,31 @@ header {
 
     border-radius: 15px;
 
-    text-align: left;
-    padding: 5px;
+    text-align: center;
+    padding: 1vw;
 }
 
 /* etc. */
-.js-back-container {
-    position: fixed;
+.back {
+    position: absolute;
 
-    bottom: 20px;
+    bottom: 4vh;
+    left: 4vh;
 
-    width: 100vw;
+    border: solid white;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 3px;
 
-    text-align: center;
+    width: 4vh;
+    height: 4vh;
+
+    transform: rotate(135deg);
 }
 
-.back {
-    width: 100px;
-    height: 30px;
-
-    background-color: var(--main-bg-color);
-    color: var(--main-txt-color);
-
-    border-radius: 15px;
+.back:hover {
+    border-color: red;
+    cursor: pointer;
 }
 
 .hidden {
@@ -260,265 +333,156 @@ button:hover {
     cursor: pointer;
 }
 
-/* Galaxy S9 Landscape */
-@media only screen and (min-width: 700px) {
-    header {
-        margin-top: 5px;
+/* landscape */
+@media only screen and (min-width: 660px) and (max-height: 420px) {
+    .js-splash button {
+        margin-top: 6.5vh;
+
+        height: 10vw;
+    }
+    
+    #tip {
+        font-size: 2.5vw;
+        padding-top: 0;
     }
 
-    .js-back-container {
-        bottom: 10px;
+    #js-address {
+        padding: 0;
     }
 
-    .js-landing {
-        margin-top: 5vh;
+    #js-form button {
+        margin-top: 16vh;
 
-        height: 250px;
+        height: 10vw;
     }
 
-    .js-level-select {
-        flex-direction: row;
-
-        margin-top: 25px;
+    .back {
+        width: 4vw;
+        height: 4vw;
     }
 
-    .js-rep-pick {
-        margin-top: 10px;
+    .js-level-button {
+        font-size: 5vw;
+    }
 
-        height: 220px;
+    .js-rep-button {
+        font-size: 2vw;
     }
 
     .js-rep-card {
-        margin-top: 5px;
+        margin-top: 2vh;
 
-        height: 60vh;
+        margin-left: 15vw;
+        margin-right: 15vw;
     }
 
     #js-center {
-        display: block;
-
-        width: 100%;
-    }
-
-    #js-image {
-        float: left;
-        margin-left: 5px;
-        margin-top: 5px;
-
-        width: 200px;
-        height: 200px;
-    }
-
-    #js-image img {
-        width: 201px;
-        height: 205px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-    }
-}
-
-/* iPad Portrait */
-@media only screen and (min-width: 700px) and (min-height: 1000px) {
-    header {
-        margin-top: 20vh;
-    }
-
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        flex-direction: column;
-
-        margin-top: 50px;
-    }
-
-    .js-rep-pick {
-        margin-top: 20px;
-
-        height: 700px;
-    }
-
-    .js-rep-card {
-        height: auto;
-    }
-
-    #js-image {
-        float: none;
+        width: 70vw;
 
         margin-left: auto;
         margin-right: auto;
-        margin-top: 40px;
+
+        display: inline-block;
     }
 
-    .js-rep-card h2 {
-        margin-top: 30px;
-        font-size: 50px;
+    #js-image {
+        margin-top: 1vh;
     }
 
-    .js-rep-card h3 {
-        font-size: 35px;
+    #js-image, #js-image img {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    #title {
+        font-size: 3vw;
+    }
+
+    #name, #party {
+        font-size: 2vw;
     }
 
     .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
-}
-
-/* iPad Landscape */
-@media only screen and (min-width: 1000px) and (min-height: 700px) {
-    header {
-        margin-top: 10vh;
-    }
-
-    .js-back-container {
-        bottom: 30px;
-    }
-
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        margin-top: 170px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 50vw;
-    }
-
-    .js-rep-pick {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        padding: 0;
-
-        width: 50vw;
-
-        height: 500px;
-    }
-
-    .js-rep-card {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 80vw;
-        height: auto;
-    }
-
-    #js-image {
-        float: none;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-
-        width: 200px;
-        height: 200px;
-    }
-
-    #js-image img {
-        width: 201px;
-        height: 205px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-        font-size: 50px;
-    }
-
-    .js-rep-card h3 {
-        font-size: 35px;
-    }
-
-    .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
+        margin-top: 0;
+        margin-left: 1vw;
+        margin-right: 2vw;
     }
 }
 
 /* Desktop */
 @media only screen and (min-width: 1100px) and (min-height: 800px) {
-    header {
-        margin-top: 10vh;
+    body {
+        background-color: white;
     }
 
-    .js-back-container {
-        bottom: 30px;
-    }
+    main {
+        width: 40vw;
+        height: 90vh;
 
-    .js-landing {
-        margin-top: 20vh;
-    }
-
-    .js-level-select {
-        margin-top: 170px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 5vh;
 
-        width: 50vw;
+        background-color: blue;
+
+        box-shadow: 8px 8px black ;
+
+        overflow: hidden;
+    }
+
+    .js-splash h1, .js-splash p, .js-landing h1, #js-form, .js-level-button {
+        height: 30vh;
+        width: 40vw;
+    }
+
+    .js-landing h1, .js-splash h1 {
+        padding-top: 8vh;
+    }
+
+    h1 {
+        font-size: 10vh;
+    }
+
+    .js-splash p, .js-splash button, #js-address, #js-form button {
+        font-size: 2vh;
+    }
+
+    .js-splash button {
+        margin-top: 10vh;
+
+        width: 25vw;
+
+        margin-left: 8vw;
+    }
+
+    #js-address {
+        width: 25vw;
+    }
+
+    #js-form button {
+        width: 25vw;
+
+        margin-left: 2vh;
+
+        margin-top: 17.9vh;
     }
 
     .js-rep-pick {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-top: 0;
+        width: 40vw;
+        height: 90vh;
 
-        padding: 0;
+        padding: 1vh;
 
-        width: 50vw;
-
-        height: 600px;
+        grid-template-columns: 19vw 19vw;
+        column-gap: 1vh;
     }
 
-    .js-rep-card {
-        margin-top: 40px;
-        margin-left: auto;
-        margin-right: auto;
-
-        width: 50vw;
+    .js-rep-button:hover, .js-rep-button:focus, .js-splash button:hover, #js-form button:hover {
+        color: red;
     }
 
-    #js-image {
-        float: none;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-
-        width: 250px;
-        height: 250px;
-    }
-
-    #js-image img {
-        width: 251px;
-        height: 255px;
-    }
-
-    .js-rep-card h2 {
-        margin-top: 5px;
-        font-size: 50px;
-    }
-
-    .js-rep-card h3 {
-        font-size: 35px;
-    }
-
-    .js-rep-contact {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-    }
-
-    button:hover, #js-left:hover , #js-right:hover, #js-form button:hover {
-        background-color: var(--hover-button-color);
+    .back {
+        border-color: black;
     }
 }
