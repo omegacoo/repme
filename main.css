@@ -150,11 +150,12 @@ h1 {
 }
 
 .js-level-button:hover {
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 #federal {
     background-color: red;
+    color: white;
 }
 
 #state {
@@ -167,6 +168,7 @@ h1 {
 
 #local {
     background-color: blue;
+    color: white;
 }
 
 /* Representative Select */
@@ -194,6 +196,8 @@ h1 {
     width: auto;
 
     font-size: 2vh;
+
+    border-radius: 15px;
 }
 
 /* Representative Card */
@@ -204,8 +208,6 @@ h1 {
 
     border: 2px solid black;
     border-radius: 30px;
-    
-    box-shadow: 3px 3px black;
 
     background-color: white;
     color: black;
@@ -303,7 +305,7 @@ h1 {
     bottom: 4vh;
     left: 4vh;
 
-    border: solid black;
+    border: solid white;
     border-width: 0 6px 6px 0;
     display: inline-block;
     padding: 3px;
@@ -315,7 +317,7 @@ h1 {
 }
 
 .back:hover {
-    border-color: white;
+    border-color: red;
     cursor: pointer;
 }
 
@@ -409,5 +411,78 @@ button:hover {
 
 /* Desktop */
 @media only screen and (min-width: 1100px) and (min-height: 800px) {
+    body {
+        background-color: white;
+    }
 
+    main {
+        width: 40vw;
+        height: 90vh;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5vh;
+
+        background-color: blue;
+
+        box-shadow: 8px 8px black ;
+
+        overflow: hidden;
+    }
+
+    .js-splash h1, .js-splash p, .js-landing h1, #js-form, .js-level-button {
+        height: 30vh;
+        width: 40vw;
+    }
+
+    .js-landing h1, .js-splash h1 {
+        padding-top: 8vh;
+    }
+
+    h1 {
+        font-size: 10vh;
+    }
+
+    .js-splash p, .js-splash button, #js-address, #js-form button {
+        font-size: 2vh;
+    }
+
+    .js-splash button {
+        margin-top: 10vh;
+
+        width: 25vw;
+
+        margin-left: 8vw;
+    }
+
+    #js-address {
+        width: 25vw;
+    }
+
+    #js-form button {
+        width: 25vw;
+
+        margin-left: 2vh;
+
+        margin-top: 17.9vh;
+    }
+
+    .js-rep-pick {
+        margin-top: 0;
+        width: 40vw;
+        height: 90vh;
+
+        padding: 1vh;
+
+        grid-template-columns: 19vw 19vw;
+        column-gap: 1vh;
+    }
+
+    .js-rep-button:hover, .js-rep-button:focus, .js-splash button:hover, #js-form button:hover {
+        color: red;
+    }
+
+    .back {
+        border-color: black;
+    }
 }

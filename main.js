@@ -318,6 +318,7 @@ function getResults(query){
         .then(response => {
             if(response.ok){
                 STATE.SCREEN = screens.LEVEL_SELECT;
+                $('#error').text('');
                 updateScreen();
 
                 return response.json();
