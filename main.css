@@ -431,5 +431,7 @@ button:hover {
 
     .back {
         border-color: black;
+        left: 32vw;
+        bottom: 10vh;
     }
 }
