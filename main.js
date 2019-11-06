@@ -357,13 +357,6 @@ function onAddressFocus(){
     });
 };
 
-function onBegin(){
-    $('#js-begin').on('click', function(){
-        STATE.SCREEN = screens.LANDING;
-        updateScreen();
-    });
-};
-
 // Draw the screen depending on the current STATE
 function updateScreen(){
     const screens = ['splash', 'landing', 'level-select', 'rep-pick', 'rep-card'];
@@ -376,24 +369,22 @@ function updateScreen(){
         };
     };
 
-    if(STATE.SCREEN === 'splash' || STATE.SCREEN === 'landing'){
-        $('.back').addClass('hidden');
+    if(STATE.SCREEN === 'rep-pick'){
+        $('.main-back').removeClass('hidden');
     } else {
-        $('.back').removeClass('hidden');
+        $('.main-back').addClass('hidden');
     };
 };
 
 function initializeScreens(){
-    $('.js-landing').addClass('hidden');
     $('.js-level-select').addClass('hidden');
     $('.js-rep-pick').addClass('hidden');
     $('.js-rep-card').addClass('hidden');
-    $('.back').addClass('hidden');
+    $('.main-back').addClass('hidden');
 };
 
 function App(){
     initializeScreens();
-    onBegin();
     onAddressFocus();
     onAddressSubmit();
     onBackClick();
