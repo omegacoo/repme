@@ -4,7 +4,6 @@ const flagImage = new Image();
 flagImage.src = 'https://www.pixelstalk.net/wp-content/uploads/images1/Download-American-Flag-Pictures.jpg';
 
 const screens = Object.freeze({
-    SPLASH: 'splash',
     LANDING: 'landing',
     LEVEL_SELECT: 'level-select',
     REP_PICK: 'rep-pick',
@@ -359,7 +358,7 @@ function onAddressFocus(){
 
 // Draw the screen depending on the current STATE
 function updateScreen(){
-    const screens = ['splash', 'landing', 'level-select', 'rep-pick', 'rep-card'];
+    const screens = ['landing', 'level-select', 'rep-pick', 'rep-card'];
 
     for(let i = 0; i < screens.length; i++){
         if(screens[i] === STATE.SCREEN){
@@ -369,10 +368,10 @@ function updateScreen(){
         };
     };
 
-    if(STATE.SCREEN === 'rep-pick'){
-        $('.main-back').removeClass('hidden');
+    if(STATE.SCREEN === 'landing'){
+        $('.back').addClass('hidden');
     } else {
-        $('.main-back').addClass('hidden');
+        $('.back').removeClass('hidden');
     };
 };
 
@@ -380,7 +379,7 @@ function initializeScreens(){
     $('.js-level-select').addClass('hidden');
     $('.js-rep-pick').addClass('hidden');
     $('.js-rep-card').addClass('hidden');
-    $('.main-back').addClass('hidden');
+    $('.back').addClass('hidden');
 };
 
 function App(){
