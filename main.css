@@ -482,6 +482,14 @@ button:hover {
         color: red;
     }
 
+    #js-left:hover, #js-right:hover {
+        flex-basis: 28px;
+    }
+
+    #js-left:active, #js-right:active {
+        flex-basis: 23px;
+    }
+
     .back {
         border-color: black;
     }
