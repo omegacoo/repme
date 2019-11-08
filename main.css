@@ -1,3 +1,8 @@
+:root {
+    --blue: #096c8a;
+    --red: #CC3529;
+}
+
 /* Galaxy S9 Portrait */
 * {
     box-sizing: border-box;
@@ -14,7 +19,7 @@ main {
     height: 100vh;
     width: 100vw;
 
-    background-color: blue;
+    background-color: var(--blue);
 }
 
 h1 {
@@ -35,7 +40,7 @@ h1 {
 
     padding-top: 14vh;
 
-    background-color: red;
+    background-color: var(--red);
 }
 
 #js-form {
@@ -79,8 +84,8 @@ h1 {
 }
 
 #error {
-    margin-top: 2vh;
-    color: red;
+    color: var(--red);
+    background-color: white;
     font-weight: bolder;
 }
 
@@ -106,7 +111,7 @@ h1 {
 }
 
 #federal {
-    background-color: red;
+    background-color: var(--red);
     color: white;
 }
 
@@ -119,7 +124,7 @@ h1 {
 }
 
 #local {
-    background-color: blue;
+    background-color: var(--blue);
     color: white;
 }
 
@@ -213,7 +218,7 @@ h1 {
     flex-shrink: 0;
     flex-basis: 25px;
 
-    background-color: red;
+    background-color: var(--red);
     color: black;
 
     font-size: 20px;
@@ -271,7 +276,7 @@ h1 {
 }
 
 .back:hover {
-    border-color: red;
+    border-color: var(--red);
     cursor: pointer;
 }
 
@@ -288,7 +293,7 @@ button:hover {
 }
 
 /* landscape */
-@media only screen and (min-width: 660px) and (max-height: 420px) {
+@media only screen and (min-width: 640px) and (max-height: 420px) {
     #tip {
         font-size: 2.5vw;
         padding-top: 0;
@@ -417,7 +422,7 @@ button:hover {
     }
 
     .js-rep-button:hover, .js-rep-button:focus, .js-splash button:hover, #js-form button:hover {
-        color: red;
+        color: var(--red);
         background-color: #f2f1f0;
     }
 
