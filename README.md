@@ -1,6 +1,6 @@
 # RepMe
 
-A web app for finding who your representitives are by your home address.
+A web app for finding who your representatives are by your home address.
 
 ## Motivation
 
